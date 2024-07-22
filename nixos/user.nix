@@ -6,7 +6,7 @@
   users = {
     users.${username} = {
       isNormalUser = true;
-      hashedPassword = "hi!";
+      hashedPassword = "$y$j9T$abJFO.M.PUao5LDd0mQxq/$8gycOypqgBLLqmnFgxLi3YvQrkARbUNKnX5Pk9wejq6!";
       extraGroups = [ "wheel" ];
     };
     mutableUsers = false;
