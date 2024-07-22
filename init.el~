@@ -1,0 +1,153 @@
+(setq use-package-always-ensure t)
+(setq default-frame-alist '((undecorated . t)))
+(require 'use-package)
+
+
+;; GENERAL
+
+(use-package emacs
+  :init
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (pixel-scroll-precision-mode)
+  (global-set-key [f12] 'eval-buffer)
+  (global-display-line-numbers-mode 1)
+  (electric-pair-mode)
+  (delete-selection-mode t)
+  (setq tab-always-indent 'complete
+	visible-bell t
+	read-extended-command-predicate #'command-completion-default-include-p
+	text-mode-ispell-word-completion nil)
+  :hook
+  (prog-mode . hs-minor-mode))
+(use-package nix-mode)
+
+
+;; THEMES
+
+(defvar my-themes '())
+
+(use-package exotica-theme
+  :config
+  (add-to-list 'my-themes 'exotica))
+
+(use-package chyla-theme
+  :config
+  (add-to-list 'my-themes 'chyla))
+
+(use-package white-sand-theme
+  :config
+  (add-to-list 'my-themes 'white-sand))
+
+(use-package gruvbox-theme
+  :config
+  (add-to-list 'my-themes 'gruvbox-dark-soft))
+
+(defun cycle-themes ()
+  (interactive)
+  (let* ((current-theme (car custom-enabled-themes))
+         (next-theme (or (cadr (member current-theme my-themes))
+                         (car my-themes))))
+    (disable-theme current-theme)
+    (load-theme next-theme t)
+    (message "%s" next-theme)))
+
+(load-theme (car my-themes) t)
+(global-set-key (kbd "C-\\") 'cycle-themes)
+
+
+;; FRAMES
+
+(use-package aggressive-indent
+  :config
+  (global-aggressive-indent-mode))
+
+(use-package frames-only-mode
+  :config
+  (frames-only-mode)
+  (global-set-key (kbd "s-d") 'delete-frame)
+  (global-set-key (kbd "s-e") 'kill-this-buffer))
+
+
+;; AUTOCOMPLETION
+
+(use-package corfu
+  :config
+  (global-corfu-mode)
+  :custom
+  (corfu-auto nil))
+
+(use-package orderless
+  :config
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))
+	read-file-name-completion-ignore-case t
+	read-buffer-completion-ignore-case t
+	completion-ignore-case t))
+
+(use-package marginalia
+  :custom
+  (marginalia-align 'right)
+  :config
+  (marginalia-mode))
+
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package all-the-icons-completion
+  :after (marginalia all-the-icons)
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init
+  (all-the-icons-completion-mode))
+
+(use-package vertico
+  :custom
+  (vertico-count 15)
+  (vertico-resize nil)
+  (vertico-cycle t)
+  :config
+  (vertico-mode))
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+
+;; ORGMODE
+
+(use-package org
+  :config
+  (setq org-startup-indented t
+    	org-startup-align-all-tables t
+    	org-startup-numerated nil
+    	org-hide-leading-stars t
+	org-return-follows-link  t)
+  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode))
+
+(use-package org-appear
+  :hook
+  (org-mode . org-appear-mode)
+  :config
+  (setq org-hide-emphasis-markers t))
+
+(use-package org-superstar
+  :hook
+  (org-mode . org-superstar-mode))
+
+
+;; LSPMODE
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((nix-mode . lsp-deferred)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp lsp-deferred)
+
+(use-package flycheck
+  :init
+  (global-flycheck-mode))
