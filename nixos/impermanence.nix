@@ -23,6 +23,7 @@
     ];
     users.${username} = {
       directories = [
+        ".ssh"
         ".local/share/Steam"
         "proyectos"
       ];
