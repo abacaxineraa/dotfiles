@@ -1,4 +1,4 @@
-{ inputs, lib, username, ... }:
+{ inputs, lib,  username, ... }:
 
 {
   imports = [
@@ -13,7 +13,6 @@
     directories = [
       "/var/log"
       "/var/lib/systemd/coredump"
-      "/etc/nixos"
       "/var/lib/bluetooth"
       "/etc/NetworkManager/system-connections"
     ];

@@ -14,7 +14,7 @@
   system.stateVersion = "24.05";
 
   environment.etc."nixos-generation".source = inputs.self;
-
+  
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
     "flakes"
@@ -75,4 +75,6 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
+  
+  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
 }
