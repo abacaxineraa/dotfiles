@@ -8,6 +8,7 @@
     extensions = [
       { package = pkgs.gnomeExtensions.pop-shell; }
       { package = pkgs.gnomeExtensions.appindicator; }
+      { package = pkgs.gnomeExtensions.vitals; }
     ];
   };
 
@@ -15,6 +16,5 @@
     gnome.gnome-tweaks
     gnome-console
     gnome.nautilus
-    gnomeExtensions.vitals
   ];
 }

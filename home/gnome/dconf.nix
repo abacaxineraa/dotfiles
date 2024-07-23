@@ -82,14 +82,6 @@
           button-layout = "close,minimize,maximize:appmenu";
         };
         
-        "org/gnome/shell" = {
-          disable-user-extensions = false;
-          enabled-extensions = [
-            "system-monitor@gnome-shell-extensions.gcampax.github.com"
-            "appindicatorsupport@rgcjonas.gmail.com"
-            "Vitals@CoreCoding.com"
-          ];
-        };
 
         # "org/gnome/settings-daemon/plugins/media-keys" = {
         #   custom-keybindings = [
