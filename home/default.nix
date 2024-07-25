@@ -20,6 +20,8 @@
     git
     godot_4
     unzip
+    evince
+    #libreoffice-qt
   ];
 
   gtk = {

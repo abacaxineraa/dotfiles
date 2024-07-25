@@ -4,26 +4,22 @@
 * Appearence
 ** General
 #+begin_src emacs-lisp
-    (setopt default-frame-alist '((undecorated . t))
-            frame-resize-pixelwise t)
-    (menu-bar-mode -1)
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1)
-    (pixel-scroll-precision-mode)
-    (global-set-key [f12] 'eval-buffer)
-    (global-display-line-numbers-mode 1)
+  (setopt default-frame-alist '((undecorated . t))
+          frame-resize-pixelwise t)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (pixel-scroll-precision-mode)
+  (global-set-key [f12] 'eval-buffer)
+  (global-display-line-numbers-mode 1)
 
-    (setopt tab-always-indent 'complete
-          visible-bell t
-          read-extended-command-predicate #'command-completion-default-include-p
-          text-mode-ispell-word-completion nil)
-    (add-hook 'prog-mode 'hs-minor-mode)
+  (setopt tab-always-indent 'complete
+        visible-bell t
+        read-extended-command-predicate #'command-completion-default-include-p
+        text-mode-ispell-word-completion nil)
+  (add-hook 'prog-mode 'hs-minor-mode)
+
 #+end_src
-*** TODO pas de question pour C-c C-c et dans fichier elisp tt le code
-*** TODO caps tock dans une touche nulle
-*** TODO organiser ce document
-*** TODO git emacs -> magit
-*** TODO la liste TODO de sam 
 ** Themes
 #+begin_src emacs-lisp
   (defvar my-themes '(exotica chyla white-sand gruvbox-dark-hard))
@@ -64,8 +60,8 @@
     (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup))
 
   (setopt vertico-count 15
-  	vertico-resize nil
-  	vertico-cycle t)
+        vertico-resize nil
+        vertico-cycle t)
   (vertico-mode)
 
   (which-key-mode)
@@ -73,38 +69,47 @@
 
 ** Orgmode
 #+begin_src emacs-lisp
-  (custom-set-faces
-   '(org-document-title ((t (:height 1.50))))
-   '(org-level-1 ((t (:height 1.37))))
-   '(org-level-2 ((t (:height 1.25))))
-   '(org-level-3 ((t (:height 1.12)))))
-  (setopt org-startup-indented t
-          org-startup-align-all-tables t
-          org-startup-numerated nil
-          org-hide-leading-stars t
-          org-return-follows-link  t)
-    (add-hook 'org-mode-hook 'org-indent-mode)
-    (add-hook 'org-mode-hook 'visual-line-mode)
+    (custom-set-faces
+     '(org-document-title ((t (:height 1.50))))
+     '(org-level-1 ((t (:height 1.37))))
+     '(org-level-2 ((t (:height 1.25))))
+     '(org-level-3 ((t (:height 1.12)))))
+    (setopt org-startup-indented t
+            org-startup-align-all-tables t
+            org-startup-numerated nil
+            org-hide-leading-stars t
+            org-return-follows-link  t
+            org-support-shift-select t)
+      (add-hook 'org-mode-hook 'org-indent-mode)
+      (add-hook 'org-mode-hook 'visual-line-mode)
 
-  (add-hook 'org-mode-hook 'org-appear-mode)
-    (setopt org-hide-emphasis-markers t)
+    (add-hook 'org-mode-hook 'org-appear-mode)
+      (setopt org-hide-emphasis-markers t)
 
-    (add-hook 'org-mode-hook 'org-superstar-mode)
+  (add-hook 'org-mode-hook 'org-superstar-mode)
+
+  ;;(set-face-attribute 'default nil :font "SourceSans3VF Medium")
+  ;;(set-face-attribute 'fixed-pitch nil :font "Source Code Pro")
+  ;;(set-face-attribute 'variable-pitch nil :font "SourceSans3VF Medium")
 #+end_src
 
 * Editing
 ** General
 #+begin_src emacs-lisp
-  (electric-pair-mode)
+  (electric-pair-mode) 
   (delete-selection-mode t)
   (global-aggressive-indent-mode)
-
+  
 #+end_src
 ** Orgmode
 #+begin_src emacs-lisp
   (setopt org-confirm-babel-evaluate nil
           initial-major-mode 'org-mode
           initial-scratch-message "#+title: scratch buffer\n")
+
+  (add-to-list 'org-emphasis-alist
+               '("=" (:foreground "red")
+                 ))
 #+end_src
 ** Completion
 #+begin_src emacs-lisp
@@ -128,10 +133,8 @@
 #+begin_src emacs-lisp
   (add-hook 'emacs-startup-hook 'treemacs)
   (setopt treemacs-position 'right)
-  (with-eval-after-load 'treemacs
-  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+  (with-eval-after-load 'treemacs)
 #+end_src
-*** TODO Add keybinding for Treemacs, treemacs-projectile
 
 * Other
 ** Project Management
