@@ -108,7 +108,7 @@
           initial-scratch-message "#+title: scratch buffer\n")
 
   (add-to-list 'org-emphasis-alist
-               '("=" (:foreground "red")
+               '("=" (:foreground "#2596be")
                  ))
 #+end_src
 ** Completion
