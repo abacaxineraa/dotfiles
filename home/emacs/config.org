@@ -4,25 +4,26 @@
 * Appearence
 ** General
 #+begin_src emacs-lisp
-  (setopt default-frame-alist '((undecorated . t))
-          frame-resize-pixelwise t)
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (pixel-scroll-precision-mode)
-  (global-set-key [f12] 'eval-buffer)
-  (global-display-line-numbers-mode 1)
+      (setopt default-frame-alist '((undecorated . t))
+              frame-resize-pixelwise t)
+      (menu-bar-mode -1)
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)
+      (pixel-scroll-precision-mode)
+      (global-set-key [f12] 'eval-buffer)
+      (global-display-line-numbers-mode 1)
 
-  (setopt tab-always-indent 'complete
-        visible-bell t
-        read-extended-command-predicate #'command-completion-default-include-p
-        text-mode-ispell-word-completion nil)
-  (add-hook 'prog-mode 'hs-minor-mode)
+      (setopt tab-always-indent 'complete
+            visible-bell t
+            read-extended-command-predicate #'command-completion-default-include-p
+            text-mode-ispell-word-completion nil
+            line-spacing 2)
+      (add-hook 'prog-mode 'hs-minor-mode)
 
 #+end_src
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(exotica chyla white-sand gruvbox-dark-hard))
+  (defvar my-themes '(ef-frost ef-bio exotica))
 
   (defun cycle-themes ()
     (interactive)
@@ -35,6 +36,8 @@
 
   (load-theme (car my-themes) t)
   (global-set-key (kbd "C-\\") 'cycle-themes)
+
+(set-frame-font "Fantasque Sans Mono" nil t)
 #+end_src
 
 ** Completion
@@ -42,7 +45,6 @@
 
   (global-corfu-mode)
   (setopt corfu-auto nil)
-
 
   (setopt completion-styles '(orderless basic)
         completion-category-defaults nil
@@ -67,32 +69,6 @@
   (which-key-mode)
 #+end_src
 
-** Orgmode
-#+begin_src emacs-lisp
-    (custom-set-faces
-     '(org-document-title ((t (:height 1.50))))
-     '(org-level-1 ((t (:height 1.37))))
-     '(org-level-2 ((t (:height 1.25))))
-     '(org-level-3 ((t (:height 1.12)))))
-    (setopt org-startup-indented t
-            org-startup-align-all-tables t
-            org-startup-numerated nil
-            org-hide-leading-stars t
-            org-return-follows-link  t
-            org-support-shift-select t)
-      (add-hook 'org-mode-hook 'org-indent-mode)
-      (add-hook 'org-mode-hook 'visual-line-mode)
-
-    (add-hook 'org-mode-hook 'org-appear-mode)
-      (setopt org-hide-emphasis-markers t)
-
-  (add-hook 'org-mode-hook 'org-superstar-mode)
-
-  ;;(set-face-attribute 'default nil :font "SourceSans3VF Medium")
-  ;;(set-face-attribute 'fixed-pitch nil :font "Source Code Pro")
-  ;;(set-face-attribute 'variable-pitch nil :font "SourceSans3VF Medium")
-#+end_src
-
 * Editing
 ** General
 #+begin_src emacs-lisp
@@ -100,16 +76,6 @@
   (delete-selection-mode t)
   (global-aggressive-indent-mode)
   
-#+end_src
-** Orgmode
-#+begin_src emacs-lisp
-  (setopt org-confirm-babel-evaluate nil
-          initial-major-mode 'org-mode
-          initial-scratch-message "#+title: scratch buffer\n")
-
-  (add-to-list 'org-emphasis-alist
-               '("=" (:foreground "#2596be")
-                 ))
 #+end_src
 ** Completion
 #+begin_src emacs-lisp
@@ -143,4 +109,52 @@
   (projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (setopt projectile-project-search-path '("~/proyectos/"))
+#+end_src
+
+
+* Orgmode
+#+begin_src emacs-lisp
+          (custom-set-faces
+           '(org-document-title ((t (:height 1.50))))
+           '(org-level-1 ((t (:height 1.37))))
+           '(org-level-2 ((t (:height 1.25))))
+           '(org-level-3 ((t (:height 1.12)))))
+          (setopt org-startup-indented t
+                  org-startup-align-all-tables t
+                  org-startup-numerated nil
+                  org-hide-leading-stars t
+                  org-return-follows-link  t
+                  org-support-shift-select t)
+            (add-hook 'org-mode-hook 'org-indent-mode)
+            (add-hook 'org-mode-hook 'visual-line-mode)
+
+          (add-hook 'org-mode-hook 'org-appear-mode)
+            (setopt org-hide-emphasis-markers t)
+
+        (add-hook 'org-mode-hook 'org-superstar-mode)
+        (setopt org-confirm-babel-evaluate nil
+                initial-major-mode 'org-mode
+                initial-scratch-message "#+title: scratch buffer\n")
+
+        (setq org-emphasis-alist
+        '(("*" bold)
+          ("/" italic)
+          ("_" underline)
+          ("=" (:foreground "red") verbatim) ;;#6d7f87
+          ("~" org-code verbatim)
+          ("+" (:strike-through t))))
+
+  (with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+               '("org-plain-latex"
+                 "\\documentclass{article}
+             [NO-DEFAULT-PACKAGES]
+             [PACKAGES]
+             [EXTRA]"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+  (setq org-latex-listings 't)
 #+end_src

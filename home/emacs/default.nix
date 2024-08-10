@@ -18,9 +18,7 @@
         corfu-terminal
         nix-mode
         exotica-theme
-        chyla-theme
-        white-sand-theme
-        gruvbox-theme
+        ef-themes
         aggressive-indent
         corfu
         orderless
