@@ -51,19 +51,22 @@
   };
 
   services = {
-    xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-      excludePackages = with pkgs; [ xterm ];
-      videoDrivers = [ "nvidia" ];
-    };
+   desktopManager.cosmic.enable = true;
+    displayManager.cosmic-greeter.enable = true;
+   
+  #   xserver = {
+  #     enable = true;
+  #     displayManager.gdm.enable = true;
+  #     desktopManager.gnome.enable = true;
+  #     excludePackages = with pkgs; [ xterm ];
+  #     videoDrivers = [ "nvidia" ];
+  #   };
 
-    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-    gnome = {
-      gnome-browser-connector.enable = true;
-      core-utilities.enable = false;
-    };
+  #   udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  #   gnome = {
+  #     gnome-browser-connector.enable = true;
+  #     core-utilities.enable = false;
+  #   };
     
     pipewire.enable = true;
     pipewire.pulse.enable = true;
@@ -76,5 +79,5 @@
     options = "--delete-older-than 30d";
   };
   
-  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
+ boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
 }
