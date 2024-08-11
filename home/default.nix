@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./gnome
+    ./cosmic
     ./emacs
     ./firefox
     ./terminal.nix
