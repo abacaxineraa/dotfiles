@@ -41,7 +41,7 @@
             ])
           ];
           xkb-options = [ "terminate:ctrl_alt_bksp"
-                          "ctrl:swapcaps"
+                          "ctrl:nocaps"
                         ];
         };
 
@@ -81,18 +81,6 @@
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "close,minimize,maximize:appmenu";
         };
-        
-
-        # "org/gnome/settings-daemon/plugins/media-keys" = {
-        #   custom-keybindings = [
-        #     "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        #   ];
-        # };
-        # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        #   binding = "<Super>t";
-        #   command = "alacritty";
-        #   name = "open-terminal";
-        # };
         
       };
 }

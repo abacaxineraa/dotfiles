@@ -23,7 +23,7 @@
 #+end_src
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(ef-frost ef-bio exotica))
+  (defvar my-themes '(ef-bio ef-frost exotica))
 
   (defun cycle-themes ()
     (interactive)
@@ -97,7 +97,7 @@
 
 ** File Tree
 #+begin_src emacs-lisp
-  (add-hook 'emacs-startup-hook 'treemacs)
+  ;; (add-hook 'emacs-startup-hook 'treemacs)
   (setopt treemacs-position 'right)
   (with-eval-after-load 'treemacs)
 #+end_src

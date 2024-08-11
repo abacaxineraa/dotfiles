@@ -1,1 +1,0 @@
-abacaxinera@poderoso.222235:1723305225
