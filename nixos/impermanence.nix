@@ -18,12 +18,11 @@
     ];
     files = [
       "/etc/machine-id"
-      "/.config/motinors.xml"
     ];
     users.${username} = {
       directories = [
         ".ssh"
-        ".mozilla/firefox/default"
+        ".mozilla/firefox/dev-edition-default"
         ".local/share/Steam"
         "proyectos"
       ];
