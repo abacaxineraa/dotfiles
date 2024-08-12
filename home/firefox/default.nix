@@ -21,6 +21,8 @@
       DisableFirefoxAccounts = true;
       DisableAccounts = true;
       DisableFirefoxScreenshots = true;
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
       DontCheckDefaultBrowser = true;
       DisplayBookmarksToolbar = "never"; # or "always" or "newtab"
       DisplayMenuBar = "default-off"; # or "always", "never" or "default-on"
