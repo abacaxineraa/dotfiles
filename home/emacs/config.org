@@ -23,21 +23,21 @@
 #+end_src
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(ef-bio ef-frost exotica))
+    (defvar my-themes '(ef-bio ef-frost exotica))
 
-  (defun cycle-themes ()
-    (interactive)
-    (let* ((current-theme (car custom-enabled-themes))
-           (next-theme (or (cadr (member current-theme my-themes))
-                           (car my-themes))))
-      (disable-theme current-theme)
-      (load-theme next-theme t)
-      (message "%s" next-theme)))
+    (defun cycle-themes ()
+      (interactive)
+      (let* ((current-theme (car custom-enabled-themes))
+             (next-theme (or (cadr (member current-theme my-themes))
+                             (car my-themes))))
+        (disable-theme current-theme)
+        (load-theme next-theme t)
+        (message "%s" next-theme)))
 
-  (load-theme (car my-themes) t)
-  (global-set-key (kbd "C-\\") 'cycle-themes)
+    (load-theme (car my-themes) t)
+    (global-set-key (kbd "C-\\") 'cycle-themes)
 
-(set-frame-font "Fantasque Sans Mono" nil t)
+  (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono"))
 #+end_src
 
 ** Completion
