@@ -1,25 +1,29 @@
 #+title: Emacs Configuration
 #+property: header-args:emacs-lisp :tangle yes :results output none
 
-* Appearence
-** General
+* Apparence
+** General Settings
 #+begin_src emacs-lisp
-      (setopt default-frame-alist '((undecorated . t))
-              frame-resize-pixelwise t)
-      (menu-bar-mode -1)
-      (tool-bar-mode -1)
-      (scroll-bar-mode -1)
-      (pixel-scroll-precision-mode)
-      (global-set-key [f12] 'eval-buffer)
-      (global-display-line-numbers-mode 1)
+  (setopt default-frame-alist '((undecorated . t))
+          frame-resize-pixelwise t)
+  
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (pixel-scroll-precision-mode)
+  (global-set-key [f12] 'eval-buffer)
+  (global-display-line-numbers-mode 1)
 
-      (setopt tab-always-indent 'complete
-            visible-bell t
-            read-extended-command-predicate #'command-completion-default-include-p
-            text-mode-ispell-word-completion nil
-            line-spacing 2)
-      (add-hook 'prog-mode 'hs-minor-mode)
+  (setopt tab-always-indent 'complete
+        visible-bell t
+        read-extended-command-predicate #'command-completion-default-include-p
+        text-mode-ispell-word-completion nil
+        line-spacing 2)
+  (add-hook 'prog-mode 'hs-minor-mode)
 
+    (electric-pair-mode) 
+  (delete-selection-mode t)
+  (global-aggressive-indent-mode)
 #+end_src
 ** Themes
 #+begin_src emacs-lisp
@@ -38,6 +42,17 @@
     (global-set-key (kbd "C-\\") 'cycle-themes)
 
   (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono"))
+#+end_src
+
+* Editing
+** Linting
+#+begin_src emacs-lisp
+  (require 'flycheck)
+  (setopt flycheck-emacs-lisp-load-path 'inherit)
+  (global-flycheck-mode)
+  (defun disable-flycheck-in-org-src-block ()
+    (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  (add-hook 'org-src-mode-hook #'disable-flycheck-in-org-src-block)
 #+end_src
 
 ** Completion
@@ -67,32 +82,20 @@
   (vertico-mode)
 
   (which-key-mode)
-#+end_src
 
-* Editing
-** General
-#+begin_src emacs-lisp
-  (electric-pair-mode) 
-  (delete-selection-mode t)
-  (global-aggressive-indent-mode)
-  
-#+end_src
-** Completion
-#+begin_src emacs-lisp
-  (setopt lsp-keymap-prefix "C-c l")
+    (setopt lsp-keymap-prefix "C-c l")
   (require 'lsp-mode)
   (add-hook 'nix-mode-hook #'lsp-deferred)
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 #+end_src
 
-** Linting
+* Project Management
+** General Settings
 #+begin_src emacs-lisp
-  (require 'flycheck)
-  (setopt flycheck-emacs-lisp-load-path 'inherit)
-  (global-flycheck-mode)
-  (defun disable-flycheck-in-org-src-block ()
-    (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
-  (add-hook 'org-src-mode-hook #'disable-flycheck-in-org-src-block)
+  (require 'projectile)
+  (projectile-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setopt projectile-project-search-path '("~/proyectos/"))
 #+end_src
 
 ** File Tree
@@ -102,17 +105,9 @@
   (with-eval-after-load 'treemacs)
 #+end_src
 
-* Other
-** Project Management
-#+begin_src emacs-lisp
-  (require 'projectile)
-  (projectile-mode)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setopt projectile-project-search-path '("~/proyectos/"))
-#+end_src
-
 
 * Orgmode
+** General Settings
 #+begin_src emacs-lisp
           (custom-set-faces
            '(org-document-title ((t (:height 1.50))))
@@ -144,6 +139,10 @@
           ("~" org-code verbatim)
           ("+" (:strike-through t))))
 
+#+end_src
+
+** LaTeX Export
+#+begin_src emacs-lisp
   (with-eval-after-load 'ox-latex
   (add-to-list 'org-latex-classes
                '("org-plain-latex"
