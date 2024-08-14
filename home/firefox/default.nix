@@ -12,6 +12,7 @@
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
+      DXNSOverHTTPS.Enabled = false;
       EnableTrackingProtection = {
         Value = true;
         Locked = true;
@@ -20,20 +21,14 @@
       };
       DisablePocket = true;
       DisableFirefoxAccounts = true;
-      DisableAccounts = true;
-      DisableFirefoxScreenshots = true;
       OverrideFirstRunPage = "";
       OverridePostUpdatePage = "";
-      DontCheckDefaultBrowser = true;
       DisplayBookmarksToolbar = "newtab";
       DisplayMenuBar = "never";
       SearchBar = "unified";
-      DisableAppUpdate = true;
-      CaptivePortal = false;
-      DNSOverHTTPS.Enabled = false;
     };
 
-    profiles.dev-editin-default = {
+    profiles.dev-edition-default = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         darkreader
         ublock-origin
@@ -41,21 +36,26 @@
         videospeed
       ];
 
-        bookmarks = [
-          {
-            name = "calendar";
-            url = "https://calendar.google.com/calendar/u/0/r";
-          }
-          {
-            name = "Hacker News";
-            url = "https://news.ycombinator.com";
-          }
-          {
-            name = "XKCD";
-            url = "https://xkcd.com";
-          }
-        ];
-        
+      bookmarks = [
+        {
+          name = "Toolbar";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "calendar";
+              url = "https://calendar.google.com/calendar/u/0/r";
+            }
+            {
+              name = "Hacker News";
+              url = "https://news.ycombinator.com";
+            }
+            {
+              name = "XKCD";
+              url = "https://xkcd.com";
+            }
+          ];
+        }
+      ];
     };
   };
 
