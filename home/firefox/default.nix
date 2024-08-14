@@ -1,8 +1,9 @@
 { pkgs, ... }:
 
 {
-
-  # imports = [ ./userpref.nix ];
+  imports = [
+    # ./userpref.nix
+  ];
   programs.firefox = {
     enable = true;
     enableGnomeExtensions = true;
@@ -24,16 +25,37 @@
       OverrideFirstRunPage = "";
       OverridePostUpdatePage = "";
       DontCheckDefaultBrowser = true;
-      DisplayBookmarksToolbar = "never"; # or "always" or "newtab"
-      DisplayMenuBar = "default-off"; # or "always", "never" or "default-on"
-      SearchBar = "unified"; # or "separate"
-      #   DisableAppUpdate = true;
-      #   CaptivePortal = false;
-      #   DNSOverHTTPS.Enabled = false;
+      DisplayBookmarksToolbar = "newtab";
+      DisplayMenuBar = "never";
+      SearchBar = "unified";
+      DisableAppUpdate = true;
+      CaptivePortal = false;
+      DNSOverHTTPS.Enabled = false;
     };
 
-    profiles.dev-edition-default = {
-      extensions = [ ];
+    profiles.dev-editin-default = {
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        darkreader
+        ublock-origin
+        privacy-badger
+        videospeed
+      ];
+
+        bookmarks = [
+          {
+            name = "calendar";
+            url = "https://calendar.google.com/calendar/u/0/r";
+          }
+          {
+            name = "Hacker News";
+            url = "https://news.ycombinator.com";
+          }
+          {
+            name = "XKCD";
+            url = "https://xkcd.com";
+          }
+        ];
+        
     };
   };
 

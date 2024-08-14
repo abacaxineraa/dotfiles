@@ -15,7 +15,13 @@
 
   environment.etc."nixos-generation".source = inputs.self;
   
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    overlays = [
+      inputs.nur.overlay
+    ];
+    config.allowUnfree = true;
+  };
+  
   nix.settings.experimental-features = [
     "flakes"
     "nix-command"

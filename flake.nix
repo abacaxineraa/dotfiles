@@ -20,7 +20,7 @@
 
     nur.url = "github:nix-community/NUR";
   };
-
+    
   outputs =
     { nixpkgs, ... }@inputs:
     {
