@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # ./userpref.nix
+     ./userpref.nix
   ];
   programs.firefox = {
     enable = true;
@@ -52,6 +52,10 @@
             {
               name = "XKCD";
               url = "https://xkcd.com";
+            }
+            {
+              name = "Gwern";
+              url = "https://gwern.net";
             }
           ];
         }
