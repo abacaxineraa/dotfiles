@@ -21,7 +21,6 @@
     unzip
     evince
     fantasque-sans-mono
-    slack
   ];
 
   gtk = {

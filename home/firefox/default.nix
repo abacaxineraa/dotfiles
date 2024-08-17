@@ -2,7 +2,7 @@
 
 {
   imports = [
-     ./userpref.nix
+    ./userpref.nix 
   ];
   programs.firefox = {
     enable = true;
@@ -30,7 +30,6 @@
 
     profiles.dev-edition-default = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        darkreader
         ublock-origin
         privacy-badger
         videospeed

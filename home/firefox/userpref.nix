@@ -58,7 +58,7 @@
     "extensions.shield-recipe-client.api_url" = "";
     "extensions.shield-recipe-client.enabled" = false;
     "extensions.webservice.discoverURL" = "";
-    "general.useragent.override" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)";
+    "general.useragent.override" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0";
     "media.autoplay.default" = 2;
     "media.navigator.enabled" = false;
     "media.video_stats.enabled" = false;
