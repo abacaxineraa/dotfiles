@@ -1,7 +1,7 @@
 #+title: Emacs Configuration
 #+property: header-args:emacs-lisp :tangle yes :results output none
 
-* Apparence
+* Appearance
 ** Frame
 #+begin_src emacs-lisp
   (menu-bar-mode -1)
@@ -16,15 +16,13 @@
 
   (add-to-list 'default-frame-alist '(alpha-background . 99))
 
-  (defun my-set-margins ()
-    (setq left-margin-width 10)
-    (setq right-margin-width 10))
-  (add-hook 'text-mode-hook 'my-set-margins)
+  (setopt left-margin-width 2)
+  (setopt right-margin-width 2)
 #+end_src
 
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(ef-bio ef-frost exotica))
+  (defvar my-themes '(ef-bio ef-kassio exotica))
 
   (defun cycle-themes ()
     (interactive)
@@ -44,13 +42,18 @@
   (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono"))
 #+end_src
 
+** Cursor
+#+begin_src emacs-lisp
+  (setopt cursor-type '(bar . 3))
+#+end_src
+
 ** Modeline
 #+begin_src emacs-lisp
   (require 'telephone-line)
   (setopt telephone-line-primary-right-separator 'telephone-line-tan-left
           telephone-line-secondary-right-separator 'telephone-line-tan-left
-          telephone-line-primary-left-separator 'telephone-line-flat-left
-          telephone-line-height 24)
+          telephone-line-primary-left-separator 'telephone-line-flat
+          telephone-line-height 20)
   (telephone-line-mode 1)
 #+end_src
 
@@ -68,18 +71,19 @@
 ** File Tree
 #+begin_src emacs-lisp
   (require 'treemacs)
-  (setq treemacs-user-mode-line-format 'none)
-  (setopt treemacs-position 'right)
+  (setopt treemacs-user-mode-line-format 'none
+          treemacs-position 'right)
+  (global-set-key (kbd "C-t") 'treemacs)
 #+end_src
 
-* Editign
+* Editing
 ** Completion
 #+begin_src emacs-lisp
   (require 'orderless)
   (setopt completion-styles '(orderless)
           tab-always-indent 'complete
           completion-category-defaults nil
-          completion-category-overrides '((file (styles partial-completion)))
+          comletion-captegory-overrides '((file (styles partial-completion)))
           read-file-name-completion-ignore-case t
           read-buffer-completion-ignore-case t
           completion-ignore-case t
@@ -134,6 +138,26 @@
           auto-save-list-file-prefix (concat auto-saves-dir ".saves-")
           tramp-backup-directory-alist `((".*" . ,backup-dir))
           tramp-auto-save-directory auto-saves-dir))
+#+end_src
+
+** Navigation
+#+begin_src emacs-lisp
+  (require 'avy)
+  (global-set-key (kbd "C-:") 'avy-goto-char-timer)
+
+  (require 'ibuf-ext)
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+  (defun ibuffer--remove-column-titles-after (_format)
+    (save-excursion
+      (set-buffer "*Ibuffer*")
+      (let ((inhibit-read-only t))
+        (goto-char 1)
+        (search-forward "-\n" nil t)
+        (delete-region 1 (point)))
+      (let ((window-min-height 1))
+        (shrink-window-if-larger-than-buffer))))
+  (advice-add 'ibuffer-update-title-and-summary :after #'ibuffer--remove-column-titles-after)
 #+end_src
 
 ** Misc
@@ -191,6 +215,62 @@
 #+end_src
 
 ** Editing
+*** Spell checking
+#+begin_src emacs-lisp
+    (require 'flycheck-aspell)
+
+    (add-to-list 'flycheck-checkers 'tex-aspell-dynamic)
+    (flycheck-aspell-define-checker "org"
+      "Org" ("--add-filter" "url")
+      (org-mode))
+
+    (add-to-list 'flycheck-checkers 'org-aspell-dynamic)
+    (advice-add #'ispell-pdict-save :after #'flycheck-maybe-recheck)
+    (defun flycheck-maybe-recheck (_)
+      (when (bound-and-true-p flycheck-mode)
+        (flycheck-buffer)))
+
+    (add-to-list 'ispell-skip-region-alist '("^#\\+begin_src ". "#\\+end_src$"))
+    (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC ". "#\\+END_SRC$"))
+    (add-to-list 'ispell-skip-region-alist '("^#\\+begin_example ". "#\\+end_example$"))
+    (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_EXAMPLE ". "#\\+END_EXAMPLE$"))
+    (add-to-list 'ispell-skip-region-alist '("\:PROPERTIES\:$" . "\:END\:$"))
+    (add-to-list 'ispell-skip-region-alist '("\\[fn:.+:" . "\\]"))
+    (add-to-list 'ispell-skip-region-alist '("^http" . "\\]"))
+    (add-to-list 'ispell-skip-region-alist '("=.*" . ".*="))
+    (add-to-list 'ispell-skip-region-alist '("- \\*.+" . ".*\\*: "))
+    (let (void)
+      (--each
+          '("ATTR_LATEX"
+            "AUTHOR"
+            "CREATOR"
+            "DATE"
+            "DESCRIPTION"
+            "EMAIL"
+            "EXCLUDE_TAGS"
+            "HTML_CONTAINER"
+            "HTML_DOCTYPE"
+            "HTML_HEAD"
+            "HTML_HEAD_EXTRA"
+            "HTML_LINK_HOME"
+            "HTML_LINK_UP"
+            "HTML_MATHJAX"
+            "INFOJS_OPT"
+            "KEYWORDS"
+            "LANGUAGE"
+            "LATEX_CLASS"
+            "LATEX_CLASS_OPTIONS"
+            "LATEX_HEADER"
+            "LATEX_HEADER_EXTRA"
+            "OPTIONS"
+            "SELECT_TAGS"
+            "STARTUP"
+            "TITLE")))
+
+    (add-hook 'text-mode-hook #'jinx-mode)
+    (global-set-key "M-$" #'jinx-correct)
+#+end_src
+
 *** Moving text
 #+begin_src emacs-lisp
   (defun move-text-internal (arg)

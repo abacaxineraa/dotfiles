@@ -49,7 +49,10 @@
         org-noter
 
         telephone-line
-        centaur-tabs
+        avy
+        bufferlo
+        flycheck-aspell
+        jinx
       ];
     extraPathPackages = with pkgs; [
       nixfmt-rfc-style
@@ -62,5 +65,9 @@
 
   home.packages = with pkgs; [
     emacs-all-the-icons-fonts
+    aspell
+    aspellDicts.es
+    aspellDicts.fr
+    aspellDicts.en
   ];
 }
