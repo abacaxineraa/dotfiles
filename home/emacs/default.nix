@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 
 {
@@ -16,7 +15,7 @@
       epkgs: with epkgs; [
         ef-themes
         exotica-theme
-        
+
         flycheck
         which-key
         lsp-mode
@@ -29,7 +28,7 @@
         orderless
         marginalia
         vertico
-        
+
         all-the-icons
         all-the-icons-dired
         all-the-icons-completion
@@ -44,16 +43,15 @@
         htmlize
         auctex
         cdlatex
-        
+
         pdf-tools
         org-noter
 
         telephone-line
         avy
-        bufferlo
-        flycheck-aspell
         jinx
       ];
+    
     extraPathPackages = with pkgs; [
       nixfmt-rfc-style
       texlive.combined.scheme-full
@@ -63,11 +61,5 @@
     ];
   };
 
-  home.packages = with pkgs; [
-    emacs-all-the-icons-fonts
-    aspell
-    aspellDicts.es
-    aspellDicts.fr
-    aspellDicts.en
-  ];
+  home.packages = with pkgs; [ emacs-all-the-icons-fonts ];
 }

@@ -4,24 +4,24 @@
   username,
   ...
 }:
-
 {
   imports = [
-       ./impermanence.nix
-       ./user.nix
+    ./impermanence.nix
+    ./user.nix
   ];
 
   system.stateVersion = "24.05";
 
   environment.etc."nixos-generation".source = inputs.self;
-  
+  environment.etc."aspell.conf".text = ''dict-dir ${
+    pkgs.aspellWithDicts (ps: with ps; [ en ])
+  }/lib/aspell'';
+
   nixpkgs = {
-    overlays = [
-      inputs.nur.overlay
-    ];
+    overlays = [ inputs.nur.overlay ];
     config.allowUnfree = true;
   };
-  
+
   nix.settings.experimental-features = [
     "flakes"
     "nix-command"
@@ -70,7 +70,7 @@
       gnome-browser-connector.enable = true;
       core-utilities.enable = false;
     };
-    
+
     pipewire.enable = true;
     pipewire.pulse.enable = true;
     printing.enable = true;
@@ -81,6 +81,9 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-  
+
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
+
+  # services.hardware.openrgb.enable = true;
+  # environment.systemPackages = with pkgs; [ openrgb-with-all-plugins ];
 }

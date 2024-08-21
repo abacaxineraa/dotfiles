@@ -112,7 +112,8 @@
 ** Linting
 #+begin_src emacs-lisp
   (require 'flycheck)
-  (setopt flycheck-emacs-lisp-load-path 'inherit)
+  (setopt flycheck-emacs-lisp-load-path 'inherit
+          debug-on-error t)
   (global-flycheck-mode)
 
   (defun disable-flycheck-in-org-src-block ()
@@ -215,60 +216,12 @@
 #+end_src
 
 ** Editing
-*** Spell checking
+*** COMMENT Spell checking
 #+begin_src emacs-lisp
-    (require 'flycheck-aspell)
-
-    (add-to-list 'flycheck-checkers 'tex-aspell-dynamic)
-    (flycheck-aspell-define-checker "org"
-      "Org" ("--add-filter" "url")
-      (org-mode))
-
-    (add-to-list 'flycheck-checkers 'org-aspell-dynamic)
-    (advice-add #'ispell-pdict-save :after #'flycheck-maybe-recheck)
-    (defun flycheck-maybe-recheck (_)
-      (when (bound-and-true-p flycheck-mode)
-        (flycheck-buffer)))
-
-    (add-to-list 'ispell-skip-region-alist '("^#\\+begin_src ". "#\\+end_src$"))
-    (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC ". "#\\+END_SRC$"))
-    (add-to-list 'ispell-skip-region-alist '("^#\\+begin_example ". "#\\+end_example$"))
-    (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_EXAMPLE ". "#\\+END_EXAMPLE$"))
-    (add-to-list 'ispell-skip-region-alist '("\:PROPERTIES\:$" . "\:END\:$"))
-    (add-to-list 'ispell-skip-region-alist '("\\[fn:.+:" . "\\]"))
-    (add-to-list 'ispell-skip-region-alist '("^http" . "\\]"))
-    (add-to-list 'ispell-skip-region-alist '("=.*" . ".*="))
-    (add-to-list 'ispell-skip-region-alist '("- \\*.+" . ".*\\*: "))
-    (let (void)
-      (--each
-          '("ATTR_LATEX"
-            "AUTHOR"
-            "CREATOR"
-            "DATE"
-            "DESCRIPTION"
-            "EMAIL"
-            "EXCLUDE_TAGS"
-            "HTML_CONTAINER"
-            "HTML_DOCTYPE"
-            "HTML_HEAD"
-            "HTML_HEAD_EXTRA"
-            "HTML_LINK_HOME"
-            "HTML_LINK_UP"
-            "HTML_MATHJAX"
-            "INFOJS_OPT"
-            "KEYWORDS"
-            "LANGUAGE"
-            "LATEX_CLASS"
-            "LATEX_CLASS_OPTIONS"
-            "LATEX_HEADER"
-            "LATEX_HEADER_EXTRA"
-            "OPTIONS"
-            "SELECT_TAGS"
-            "STARTUP"
-            "TITLE")))
-
-    (add-hook 'text-mode-hook #'jinx-mode)
-    (global-set-key "M-$" #'jinx-correct)
+  (require 'jinx)
+  (add-hook 'text-mode-hook #'jinx-mode)
+  (keymap-global-set "M-c" #'jinx-correct)
+  (setopt jinx-languages "en")
 #+end_src
 
 *** Moving text
@@ -355,4 +308,3 @@
 #+begin_src emacs-lisp
   (setopt gc-cons-threshold (* 100 1024 1024))
 #+end_src
-
