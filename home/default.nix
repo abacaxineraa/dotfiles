@@ -23,6 +23,8 @@
     evince
     fantasque-sans-mono
     libreoffice
+    openconnect
+    okta-aws-cli
   ];
 
   gtk = {

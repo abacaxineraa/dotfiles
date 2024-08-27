@@ -1,8 +1,3 @@
-#{ pkgs, lib }:
-
-
-
-
 {
   buildNpmPackage,
   fetchFromGitHub,
@@ -33,68 +28,14 @@ buildNpmPackage rec {
 
 
 
+  # openfortivpn-webview --url 'https://ciena.okta.com' --trusted-cert='HJdEvkbyTW9ygH0azudaf8VN2Fuvl8odWWghLPX+T6c=' > cookie.txt
+
+  # sudo openfortivpn "epxvpn.ciena.com:443" --cookie=#"$cookie" --pppd-accept-remote
 
 
-
-  # pkgs.stdenv.mkDerivation rec {
-#   pname = "openfortivpn-webview";
-#   version = "1.20";
-#   owner = "gm-vm";
-#   repo = "openfortivpn-webview";
-#   rev = "36fd3ea39306152470ab202e9049f282822a0eef";
-
-#   src = pkgs.fetchFromGitHub {
-#     owner = owner;
-#     repo = repo;
-#     rev = rev;
-#     sha256 = "sha256-BM5hurJDPYpbt2WV6C1dldLx2wD9eDZlTK/TeHXpmY0=";
-#   };
-
-#   buildInputs = with pkgs.qt6; [ qmake qtwebengine qtwayland ];
-
-#   nativeBuildInputs = with pkgs.qt6; [ wrapQtAppsHook qtwebengine qtwayland ];
-#   dontWrapQtApps = false;
-
-#   configurePhase = ''
-#         cd ./openfortivpn-webview-qt
-#     '';
-
-#   buildPhase = ''
-#         qmake . DESTDIR=$out/bin && make
-#     '';
-
-
-
+  # VPN_HOST=epxvpn.ciena.com && VPN_PORT=443
+  # openfortivpn-webview "${VPN_HOST}:${VPN_PORT}" 2>/dev/null \
+  # | sudo openfortivpn "${VPN_HOST}:${VPN_PORT}" --cookie-on-stdin --pppd-accept-remote
 
   
-# pkgs.stdenv.mkDerivation rec {
-  #   pname = "openfortivpn-webview";
-  #   version = "1.2.0";
-
-  #   src = pkgs.fetchFromGitHub {
-  #     repo = "openfortivpn-webview";
-  #     owner = "gm-vm";
-  #     rev = "48e831167c25f10a33b4fd793ba3442ff0c89099";
-  #     hash = "sha256-UJu0rD/mmb68daVtSe0Ll3DjL9NSOtIvBy0uypkNiXU=";
-  #   };
-
-  #   buildInputs = [ pkgs.qt6.qtbase pkgs.qt6.qtwebengine ];
-  #   nativeBuildInputs = [ pkgs.qt6.wrapQtAppsHook ];
-  #   dontWrapQtApps = true;
-
-  #   installPhase = ''
-  #           cd openfortivpn-webview-qt
-  #           qmake .
-  #           make
-  #           mkdir -p $out/bin
-  #           mv openfortivpn-webview $out/bin/
-  #         '';
-
-  #   meta = with lib; {
-  #     description = "OpenfortiVPN webview to get the cookie";
-  #     homepage = "https://github.com/gm-vm/openfortivpn-webview";
-  #     license = licenses.mit;
-  #     platforms = platforms.unix;
-  #     mainProgram = "openfortivpn-webview";
-  #   };
 }
