@@ -2,31 +2,31 @@
 
 {
   imports = [
-    ./userpref.nix 
+    #./userpref.nix 
   ];
   programs.firefox = {
     enable = true;
     enableGnomeExtensions = true;
     package = pkgs.firefox-devedition;
-
-    policies = {
-      DisableTelemetry = true;
-      DisableFirefoxStudies = true;
-      DXNSOverHTTPS.Enabled = false;
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-      };
-      DisablePocket = true;
-      DisableFirefoxAccounts = true;
-      OverrideFirstRunPage = "";
-      OverridePostUpdatePage = "";
-      DisplayBookmarksToolbar = "newtab";
-      DisplayMenuBar = "never";
-      SearchBar = "unified";
-    };
+        
+    # policies = {
+    #   DisableTelemetry = true;
+    #   DisableFirefoxStudies = true;
+    #   DXNSOverHTTPS.Enabled = false;
+    #   EnableTrackingProtection = {
+    #     Value = true;
+    #     Locked = true;
+    #     Cryptomining = true;
+    #     Fingerprinting = true;
+    #   };
+    #   DisablePocket = true;
+    #   DisableFirefoxAccounts = true;
+    #   OverrideFirstRunPage = "";
+    #   OverridePostUpdatePage = "";
+    #   DisplayBookmarksToolbar = "newtab";
+    #   DisplayMenuBar = "never";
+    #   SearchBar = "unified";
+    # };
 
     profiles.dev-edition-default = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -59,7 +59,7 @@
           ];
         }
       ];
-    };
+        };
   };
 
   xdg.configFile = {

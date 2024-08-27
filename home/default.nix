@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./vpn
     ./gnome
     ./emacs
     ./firefox
