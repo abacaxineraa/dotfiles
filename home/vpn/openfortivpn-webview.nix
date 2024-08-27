@@ -1,20 +1,28 @@
-# https://github.com/l-lin/dotfiles/blob/main/pkgs/openfortivpn-webview/default.nix
+# https://github.com/l-lin/dotfiles/blob/main/pkgs/openfortivpn-webview/default.nix and https://github.com/pablomartan/openfortivpn-webview-qt/blob/main/openfortivpn-webview-qt/default.nix
 
-{ stdenvNoCC, lib }: stdenvNoCC.mkDerivation rec {
+{ pkgs, lib }:
+
+pkgs.stdenv.mkDerivation rec {
   pname = "openfortivpn-webview";
   version = "1.2.0";
 
-  src = builtins.fetchTarball {
-    url = "https://github.com/gm-vm/openfortivpn-webview/releases/download/v${version}-electron/openfortivpn-webview-${version}.tar.xz";
-    sha256 = "050vsb60zk8q398rzgl0glz3a2jpfghllmcnm1gjfxm9i7n2ddsa";
+  src = pkgs.fetchFromGitHub {
+    repo = "openfortivpn-webview";
+    owner = "gm-vm";
+    rev = "48e831167c25f10a33b4fd793ba3442ff0c89099";
+    hash = "sha256-UJu0rD/mmb68daVtSe0Ll3DjL9NSOtIvBy0uypkNiXU=";
   };
 
-  phases = [ "unpackPhase" "installPhase" ];
+  buildInputs = [ pkgs.qt6.qtbase pkgs.qt6.qtwebengine ];
+  nativeBuildInputs = [ pkgs.qt6.wrapQtAppsHook ];
+  dontWrapQtApps = true;
 
   installPhase = ''
+    cd openfortivpn-webview-qt
+    qmake .
+    make
     mkdir -p $out/bin
-    # We need to add everything from the tarball because it contains some dependencies used by the binary, like `libffmpeg.so`.
-    cp -r * $out/bin
+    mv openfortivpn-webview $out/bin/
   '';
 
   meta = with lib; {
