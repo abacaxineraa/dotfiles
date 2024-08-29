@@ -159,6 +159,8 @@
       (let ((window-min-height 1))
         (shrink-window-if-larger-than-buffer))))
   (advice-add 'ibuffer-update-title-and-summary :after #'ibuffer--remove-column-titles-after)
+
+  (setopt browse-url-browser-function #'browse-url-firefox)
 #+end_src
 
 ** Misc

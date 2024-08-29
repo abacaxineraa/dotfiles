@@ -2,6 +2,8 @@
   inputs,
   pkgs,
   username,
+  config,
+  lib,
   ...
 }:
 {
@@ -13,9 +15,21 @@
   system.stateVersion = "24.05";
 
   environment.etc."nixos-generation".source = inputs.self;
-  environment.etc."aspell.conf".text = ''dict-dir ${
-    pkgs.aspellWithDicts (ps: with ps; [ en ])
-  }/lib/aspell'';
+
+  environment.extraInit =
+    ''
+         unset ASPELL_CONF
+         for i in ${builtins.concatStringsSep " " (lib.lists.reverseList config.environment.profiles)} ; do
+           if [ -d "$i/lib/aspell" ]; then
+             export ASPELL_CONF="dict-dir $i/lib/aspell"
+           fi
+         done
+
+         export NIX_USER_PROFILE_DIR="/nix/var/nix/profiles/per-user/$USER"
+         export NIX_PROFILES="${builtins.concatStringsSep " " (lib.lists.reverseList config.environment.profiles)}"
+      '';
+
+  
 
   nixpkgs = {
     overlays = [ inputs.nur.overlay ];

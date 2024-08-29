@@ -28,7 +28,7 @@ buildNpmPackage rec {
 
 
 
-  # openfortivpn-webview --url 'https://ciena.okta.com' --trusted-cert='HJdEvkbyTW9ygH0azudaf8VN2Fuvl8odWWghLPX+T6c=' > cookie.txt
+  # openfortivpn-webview --url 'https://ciena.okta.com' --trusted-cert='sha256/HJdEvkbyTW9ygH0azudaf8VN2Fuvl8odWWghLPX+T6c=' > cookie.txt
 
   # sudo openfortivpn "epxvpn.ciena.com:443" --cookie=#"$cookie" --pppd-accept-remote
 
@@ -37,5 +37,6 @@ buildNpmPackage rec {
   # openfortivpn-webview "${VPN_HOST}:${VPN_PORT}" 2>/dev/null \
   # | sudo openfortivpn "${VPN_HOST}:${VPN_PORT}" --cookie-on-stdin --pppd-accept-remote
 
+  #openconnect --protocol=fortinet
   
 }

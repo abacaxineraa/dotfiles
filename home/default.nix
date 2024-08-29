@@ -23,8 +23,10 @@
     evince
     fantasque-sans-mono
     libreoffice
-    openconnect
-    okta-aws-cli
+
+    (aspellWithDicts
+      (dicts: with dicts; [ en en-computers en-science es fr ]))
+    
   ];
 
   gtk = {
