@@ -1,6 +1,8 @@
 #+title: Emacs Configuration
 #+property: header-args:emacs-lisp :tangle yes :results output none
 
+https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288a630
+
 * Appearance
 ** Frame
 #+begin_src emacs-lisp
@@ -160,7 +162,8 @@
         (shrink-window-if-larger-than-buffer))))
   (advice-add 'ibuffer-update-title-and-summary :after #'ibuffer--remove-column-titles-after)
 
-  (setopt browse-url-browser-function #'browse-url-firefox)
+ (setq browse-url-browser-function 'browse-url-generic
+       browse-url-generic-program "firefox-devedition") 
 #+end_src
 
 ** Misc
