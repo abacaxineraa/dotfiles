@@ -18,8 +18,6 @@
 
         flycheck
         which-key
-        lsp-mode
-        lsp-ui
         nix-mode
         aggressive-indent
 
@@ -44,6 +42,9 @@
         auctex
         cdlatex
 
+        lsp-mode
+        lsp-ui
+
         pdf-tools
         org-noter
 
@@ -51,7 +52,7 @@
         avy
         jinx
       ];
-    
+
     extraPathPackages = with pkgs; [
       nixfmt-rfc-style
       texlive.combined.scheme-full

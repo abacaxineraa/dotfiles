@@ -96,6 +96,10 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (add-hook 'nix-mode-hook #'lsp-deferred)
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 
+  ;; (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+  ;; (add-hook 'before-save-hook #'nix-format-before-save)
+
+
   (require 'corfu)
   (setopt corfu-auto t)
   (global-corfu-mode)
