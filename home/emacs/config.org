@@ -96,10 +96,6 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (add-hook 'nix-mode-hook #'lsp-deferred)
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 
-  ;; (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
-  ;; (add-hook 'before-save-hook #'nix-format-before-save)
-
-
   (require 'corfu)
   (setopt corfu-auto t)
   (global-corfu-mode)
@@ -225,12 +221,12 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 #+end_src
 
 ** Editing
-*** COMMENT Spell checking
+*** Spell checking
 #+begin_src emacs-lisp
   (require 'jinx)
   (add-hook 'text-mode-hook #'jinx-mode)
   (keymap-global-set "M-c" #'jinx-correct)
-  (setopt jinx-languages "en")
+  (keymap-global-set "C-M-c" #'jinx-languages)
 #+end_src
 
 *** Moving text

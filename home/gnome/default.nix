@@ -9,6 +9,7 @@
       { package = pkgs.gnomeExtensions.pop-shell; }
       { package = pkgs.gnomeExtensions.appindicator; }
       { package = pkgs.gnomeExtensions.vitals; }
+      { package = pkgs.gnomeExtensions.rounded-window-corners; }
     ];
   };
 
