@@ -19,11 +19,14 @@
     files = [
       "/etc/machine-id"
       "/.config/motinors.xml"
+      "/.mozilla/firefox/dev-edition-default/cookies.sqlite"
+      "/.mozilla/firefox/dev-edition-default/cookies.sqlite-wal"
+      "/.mozilla/firefox/dev-edition-default/storage.sqlite"
     ];
     users.${username} = {
       directories = [
         ".ssh"
-        ".mozilla/firefox/dev-edition-default"
+        "/.config/"
         ".local/share/Steam"
         "proyectos"
       ];

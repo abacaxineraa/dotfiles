@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-{
+{  
   imports = [
     #./userpref.nix 
   ];
@@ -8,25 +8,17 @@
     enable = true;
     enableGnomeExtensions = true;
     package = pkgs.firefox-devedition;
-        
-    # policies = {
-    #   DisableTelemetry = true;
-    #   DisableFirefoxStudies = true;
-    #   DXNSOverHTTPS.Enabled = false;
-    #   EnableTrackingProtection = {
-    #     Value = true;
-    #     Locked = true;
-    #     Cryptomining = true;
-    #     Fingerprinting = true;
-    #   };
-    #   DisablePocket = true;
-    #   DisableFirefoxAccounts = true;
-    #   OverrideFirstRunPage = "";
-    #   OverridePostUpdatePage = "";
-    #   DisplayBookmarksToolbar = "newtab";
-    #   DisplayMenuBar = "never";
-    #   SearchBar = "unified";
-    # };
+    
+    policies = {
+      NewTabPage = true;
+      DisableFirefoxAccounts = true;
+      DisableAppUpdate = true;
+      CaptivePortal = false;
+      DNSOverHTTPS.Enabled = false;
+      DisableFirefoxStudies = true;
+      DisableTelemetry = true;
+      DisablePocket = true;
+    };
 
     profiles.dev-edition-default = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -59,7 +51,7 @@
           ];
         }
       ];
-        };
+    };
   };
 
   xdg.configFile = {
