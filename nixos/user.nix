@@ -7,7 +7,7 @@
     users.${username} = {
       isNormalUser = true;
       hashedPassword = "$6$W1wEHPgv7TpCWoUh$Huovoj1TJy5nw5BbrHiZvaf.CNxsR/sP2F7tCY/pTqgA7qMJ54O670xA.v8L5EohpeTH1Y1IUtHK3JQ28N8k21";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" ];
     };
     mutableUsers = false;
   };
