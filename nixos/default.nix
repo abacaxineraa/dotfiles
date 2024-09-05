@@ -98,17 +98,6 @@
 
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
 
-  # services.hardware.openrgb.enable = true;
-  # environment.systemPackages = with pkgs; [ openrgb-with-all-plugins ];
-
-  # hardware = {
-  #   opengl.enable = true;
-  #   nvidia = {
-  #     modesetting.enable = true;
-  #     nvidiaSettings = true;
-  #   };
-  # };
-
   virtualisation.docker =
     {
       enable = true;
@@ -117,5 +106,4 @@
       #   setSocketVariable = true;
       # };
     };
-  users.users.${username}.extraGroups = [ "docker" ];
 }

@@ -18,6 +18,9 @@
       DisableFirefoxStudies = true;
       DisableTelemetry = true;
       DisablePocket = true;
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+      DisplayBookmarksToolbar = "newtab";
     };
 
     profiles.dev-edition-default = {
@@ -33,7 +36,7 @@
           toolbar = true;
           bookmarks = [
             {
-              name = "calendar";
+              name = "Calendar";
               url = "https://calendar.google.com/calendar/u/0/r";
             }
             {
