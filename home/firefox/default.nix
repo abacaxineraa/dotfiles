@@ -2,7 +2,7 @@
 
 {  
   imports = [
-    #./userpref.nix 
+    ./userpref.nix 
   ];
   programs.firefox = {
     enable = true;
@@ -18,8 +18,8 @@
       DisableFirefoxStudies = true;
       DisableTelemetry = true;
       DisablePocket = true;
-      OverrideFirstRunPage = "";
-      OverridePostUpdatePage = "";
+      OverrideFirstRunPage = "about:blank";
+      OverridePostUpdatePage = "about:blank";
       DisplayBookmarksToolbar = "newtab";
     };
 

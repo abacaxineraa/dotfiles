@@ -25,9 +25,7 @@
         ".ssh"
         ".config/"
         ".local/share/Steam"
-        ".mozilla/firefox/dev-edition-default/cookies.sqlite"
-        ".mozilla/firefox/dev-edition-default/cookies.sqlite-wal"
-        ".mozilla/firefox/dev-edition-default/storage.sqlite"
+        ".mozilla/firefox/dev-edition-default"
         "proyectos"
       ];
     };
