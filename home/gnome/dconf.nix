@@ -73,9 +73,7 @@
 
         "org/gnome/shell" = {
           enabled-extensions = [
-            "blur-my-shell@aunetx"
             "caffeine@patapon.info"
-            "forge@jmmaranan.com"
             "Vitals@CoreCoding.com"
           ];
         };
