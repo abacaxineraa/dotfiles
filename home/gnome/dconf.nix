@@ -1,7 +1,5 @@
 { lib, pkgs, ... }:
 
-
-
 {
   dconf.settings =
     with lib.hm.gvariant;
@@ -75,8 +73,15 @@
 
         "org/gnome/shell" = {
           enabled-extensions = [
+            "blur-my-shell@aunetx"
+            "caffeine@patapon.info"
+            "forge@jmmaranan.com"
             "Vitals@CoreCoding.com"
           ];
+        };
+
+        "org/gnome/desktop/interface" = {
+          gtk-theme = "HighContrastInverse";
         };
       };
 }

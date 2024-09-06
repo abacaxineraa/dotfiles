@@ -11,7 +11,7 @@
       { package = pkgs.gnomeExtensions.blur-my-shell; }
       { package = pkgs.gnomeExtensions.caffeine; }
       { package = pkgs.gnomeExtensions.forge; }
-      { package = pkgs.gnomeExtensions.wiggle; }
+      { package = pkgs.gnomeExtensions.compact-top-bar; }
     ];
   };
 
@@ -19,6 +19,5 @@
     gnome.gnome-tweaks
     gnome-console
     gnome.nautilus
-    gnome.geary
   ];
 }

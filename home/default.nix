@@ -3,11 +3,13 @@
 {
   imports = [
     ./vpn
-    ./gnome
+    # ./gnome
+    ./test.nix
     ./emacs
     ./firefox
     ./terminal.nix
     ../modules/home-manager/emacs.nix
+    inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
   home.stateVersion = "24.05";
@@ -24,18 +26,9 @@
     fantasque-sans-mono
     libreoffice
     google-chrome
-
     (aspellWithDicts
       (dicts: with dicts; [ en en-computers en-science es fr ]))
   ];
-
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "Numix-Cursor";
-      package = pkgs.numix-cursor-theme;
-    };
-  };
 
   programs.git = {
     enable = true;
@@ -44,8 +37,13 @@
     userEmail = "anasofitorresbe@gmail.com";
   };
 
-  # catppuccin = {
-  #   enable = true;
-  #   flavor = "macchiato";
-  # };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "Numix-Cursor";
+      package = pkgs.numix-cursor-theme;
+    };
+  };
 }
+
