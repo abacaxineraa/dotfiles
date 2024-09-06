@@ -3,8 +3,7 @@
 {
   imports = [
     ./vpn
-    # ./gnome
-    ./test.nix
+    ./gnome
     ./emacs
     ./firefox
     ./terminal.nix
@@ -44,4 +43,9 @@
     userName = "Ana Torres";
     userEmail = "anasofitorresbe@gmail.com";
   };
+
+  # catppuccin = {
+  #   enable = true;
+  #   flavor = "macchiato";
+  # };
 }

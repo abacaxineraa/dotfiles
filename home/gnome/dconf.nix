@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 
+
+
 {
   dconf.settings =
     with lib.hm.gvariant;
@@ -15,10 +17,6 @@
           picture-uri = wallpaper;
           picture-uri-dark = wallpaper;
           piture-options = "scaled";
-        };
-
-        "org/gnome/desktop/peripherals/keyboard" = {
-          numberlock-state = true;
         };
 
         "org/gnome/desktop/screensaver" = {
@@ -75,21 +73,9 @@
           button-layout = "close,minimize,maximize:appmenu";
         };
 
-        "org/gnome/shell/extensions/pop-shell" = {
-          active-hint = false;
-          active-hint-border-radius = 1;
-          gap-inner = mkUint32 0;
-          gap-outer = mkUint32 0;
-          tile-by-default = true;
-        };
-
         "org/gnome/shell" = {
           enabled-extensions = [
-            "pop-shell@system76.com"
-            "appindicatorsupport@rgcjonas.gmail.com"
             "Vitals@CoreCoding.com"
-            "native-window-placement@gnome-shell-extensions.gcampax.github.com"
-            "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
           ];
         };
       };
