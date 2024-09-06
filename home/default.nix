@@ -3,7 +3,8 @@
 {
   imports = [
     ./vpn
-    ./gnome
+    # ./gnome
+    ./test.nix
     ./emacs
     ./firefox
     ./terminal.nix

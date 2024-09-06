@@ -40,18 +40,19 @@
               "us+altgr-intl"
             ])
           ];
-          xkb-options = [ "terminate:ctrl_alt_bksp"
-                          "ctrl:nocaps"
-                        ];
+          xkb-options = [
+            "terminate:ctrl_alt_bksp"
+            "ctrl:nocaps"
+          ];
         };
 
         "org/gnome/desktop/interface" = {
           clock-show-weekday = true;
-        font-antialiasing = "grayscale";
-        font-hinting = "slight";
-        color-scheme = "prefer-dark";
-        toolkit-accessibility = true;
-      };
+          font-antialiasing = "grayscale";
+          font-hinting = "slight";
+          color-scheme = "prefer-dark";
+          toolkit-accessibility = true;
+        };
 
         "org/gnome/desktop/peripherals/mouse" = {
           natural-scroll = true;
@@ -70,6 +71,10 @@
           night-light-temperature = mkUint32 3170;
         };
 
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = "close,minimize,maximize:appmenu";
+        };
+
         "org/gnome/shell/extensions/pop-shell" = {
           active-hint = false;
           active-hint-border-radius = 1;
@@ -78,9 +83,14 @@
           tile-by-default = true;
         };
 
-        "org/gnome/desktop/wm/preferences" = {
-          button-layout = "close,minimize,maximize:appmenu";
+        "org/gnome/shell" = {
+          enabled-extensions = [
+            "pop-shell@system76.com"
+            "appindicatorsupport@rgcjonas.gmail.com"
+            "Vitals@CoreCoding.com"
+            "native-window-placement@gnome-shell-extensions.gcampax.github.com"
+            "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
+          ];
         };
-        
       };
 }
