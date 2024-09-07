@@ -4,6 +4,9 @@ let
   mod = "Mod4";
 in
 {
+  imports = [
+    ./waybar.nix
+  ];
   home.packages = with pkgs; [
     grim
     slurp
@@ -21,8 +24,10 @@ in
       width = 250;
     };
   };
-  
+
+  # nvidia
   wayland.windowManager.sway.extraOptions = [ "--unsupported-gpu" ];
+  
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -72,22 +77,6 @@ in
     # };
   };  
 }
-
-
-  # exec sleep 5; systemctl --user start kanshi.service
-
-  # # Brightness
-  # bindsym XF86MonBrightnessDown exec light -U 10
-  # bindsym XF86MonBrightnessUp exec light -A 10
-
-  # # Volume
-  # bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
-  # bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
-  # bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
-
-
-  
-
 
   # https://shen.hong.io/nixos-home-manager-wayland-sway/
   # https://nix-community.github.io/home-manager/options.xhtml#opt-wayland.windowManager.sway.config
