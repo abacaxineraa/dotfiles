@@ -25,6 +25,7 @@ in
       { package = pkgs.gnomeExtensions.pop-shell; }
       { package = pkgs.gnomeExtensions.user-themes; }
       { package = pkgs.gnomeExtensions.blur-my-shell ; }
+      { package = pkgs.gnomeExtensions.unite ; }
     ];
   };
 
@@ -38,11 +39,6 @@ in
     (fluent-gtk-theme.override {
       themeVariants = [ "grey" ];
       sizeVariants = [ "compact" "standard" ];
-      tweaks = [
-        "square"
-        "solid"
-        "noborder"
-      ];
     })
   ];
 }

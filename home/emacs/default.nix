@@ -47,7 +47,9 @@
 
         pdf-tools
         org-noter
-
+        org-pdftools
+        org-noter-pdftools
+        
         telephone-line
         avy
         jinx

@@ -8,7 +8,7 @@
 {
   imports = [
     ./vpn
-    ./gnome
+    ./sway
     ./emacs
     ./firefox
     ./terminal.nix
@@ -47,6 +47,7 @@
     userEmail = "anasofitorresbe@gmail.com";
   };
 
+ 
   gtk = {
     enable = true;
     cursorTheme = {
