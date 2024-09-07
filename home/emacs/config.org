@@ -53,6 +53,12 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (setopt cursor-type '(bar . 3))
 #+end_src
 
+** Indent lines
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setopt highlight-indent-guides-method 'character)
+#+end_src
+
 ** Modeline
 #+begin_src emacs-lisp
   (require 'telephone-line)
@@ -95,24 +101,23 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
           completion-ignore-case t
           read-extended-command-predicate #'command-completion-default-include-p)
 
-  (require 'lsp-mode)
-  (setopt lsp-keymap-prefix "C-c l")
-  (add-hook 'nix-mode-hook #'lsp-deferred)
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'eglot)
+  (require 'flycheck-eglot)
+  (global-flycheck-eglot-mode 1)
 
-  (require 'corfu)
-  (setopt corfu-auto t)
-  (global-corfu-mode)
+    (require 'corfu)
+    (setopt corfu-auto t)
+    (global-corfu-mode)
 
-  (require 'vertico)
-  (setopt vertico-count 15
-          vertico-resize nil
-          vertico-cycle t)
-  (vertico-mode)
+    (require 'vertico)
+    (setopt vertico-count 15
+            vertico-resize nil
+            vertico-cycle t)
+    (vertico-mode)
 
-  (require 'marginalia)
-  (setopt marginalia-align 'right)
-  (marginalia-mode)
+    (require 'marginalia)
+    (setopt marginalia-align 'right)
+    (marginalia-mode)
 #+end_src
 
 ** Linting

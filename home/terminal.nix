@@ -5,16 +5,21 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      font.size = 10;
+      font.size = 11;
       cursor.style.shape = "Beam";
+  
+      window = {
+        decorations = "none";
+        blur = false;
+        opacity = 1;
+        padding.x = 15;
+        padding.y = 0;
+      };
       
-      # window = {
-      #   decorations = "none";
-      #   blur = false;
-      #   opacity = 1;
-      #   padding.x = 15;
-      #   padding.y = 0;
-      # };
+      font.normal = {
+family = "Fantasque Sans Mono";
+style = "Regular";
+      };
       
       import = [
         "${pkgs.alacritty-theme}/catppuccin_mocha.toml"

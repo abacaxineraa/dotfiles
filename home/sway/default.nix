@@ -14,7 +14,6 @@ in
     swayidle
     wl-clipboard
     mako
-    alacritty
   ];
 
   programs.wofi = {
@@ -35,27 +34,21 @@ in
     
     config = {
       modifier = mod;
+      floating.modifier = mod;
+
+
+      
       terminal = "alacritty"; 
       startup = [
-        {command = "alacritty";}
+        {command = "firefox-devedition";}
       ];
-      menu = "wofi --show run";
-      
-      bars = [{
-        fonts.size = 15.0;
-        command = "waybar";
-        position = "bottom";
-      }];          
-      
+
       focus.followMouse = true;
       workspaceAutoBackAndForth = true;
     };
   };
 
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-  };
+
 
 
   services.cliphist.enable = true;
