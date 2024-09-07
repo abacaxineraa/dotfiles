@@ -26,19 +26,22 @@
     enable = true;
     settings = {
       default_session.command = ''
-      ${pkgs.greetd.tuigreet}/bin/tuigreet \
-        --time \
-        --asterisks \
-        --user-menu \
-        --cmd sway
-    '';
+        ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --time \
+          --asterisks \
+          --user-menu \
+          --cmd sway
+      '';
     };
   };
 
   security.polkit.enable = true;
   security.pam.services.swaylock = { };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = 1;
+    NIXOS_OZONE_WL = "1";
+  };
   environment.systemPackages = [ pkgs.sway ];
   services.gnome.gnome-keyring.enable = true;
 

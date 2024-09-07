@@ -87,3 +87,6 @@
     config.allowUnfree = true;
   };
 }
+
+
+  #https://github.com/deciduously/nixos-config/tree/4f062170218f2315659314934af0326c75b98dc9
