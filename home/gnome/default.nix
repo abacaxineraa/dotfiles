@@ -23,17 +23,26 @@ in
       { package = pkgs.gnomeExtensions.vitals; }
       { package = pkgs.gnomeExtensions.caffeine; }
       { package = pkgs.gnomeExtensions.pop-shell; }
+      { package = pkgs.gnomeExtensions.user-themes; }
+      { package = pkgs.gnomeExtensions.blur-my-shell ; }
     ];
   };
 
   home.packages = with pkgs; [
     gnome.gnome-tweaks
-    gnome-console
     gnome.nautilus
+    
+    (fluent-icon-theme.override {
+      colorVariants = [ "grey" ];
+    })
+    (fluent-gtk-theme.override {
+      themeVariants = [ "grey" ];
+      sizeVariants = [ "compact" "standard" ];
+      tweaks = [
+        "square"
+        "solid"
+        "noborder"
+      ];
+    })
   ];
-
-  gtk = with pkgs; {
-    gtk3.extraCss = css;
-    gtk4.extraCss = css;
-  };
 }

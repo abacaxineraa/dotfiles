@@ -1,6 +1,28 @@
 { pkgs, config, ... }:
 
 {
+  home.packages = [ pkgs.alacritty-theme ];
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.size = 10;
+      cursor.style.shape = "Beam";
+      
+      window = {
+        decorations = "none";
+        blur = false;
+        opacity = 1;
+        padding.x = 15;
+        padding.y = 0;
+      };
+      
+      import = [
+        "${pkgs.alacritty-theme}/catppuccin_mocha.toml"
+      ];
+    };
+  };
+
+  
   programs = {
     fish = {
       enable = true;

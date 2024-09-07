@@ -14,7 +14,7 @@
     extraEmacsPackages =
       epkgs: with epkgs; [
         ef-themes
-        exotica-theme
+        catppuccin-theme
 
         flycheck
         which-key

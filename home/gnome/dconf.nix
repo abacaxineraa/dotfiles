@@ -4,11 +4,19 @@
   dconf.settings =
     with lib.hm.gvariant;
     let
-      wallpaper = builtins.toString ../../assets/wallpaper.jpg;
+      wallpaper = "file://${../../assets/wallpaper.png}";
     in
       {
         "org/gnome/desktop/interface" = {
           show-battery-percentage = true;
+          icon-theme = "Fluent-grey-light";
+          gtk-theme = "Fluent-grey-Dark-compact";
+          clock-show-weekday = true;
+          font-antialiasing = "rgba";
+          font-hinting = "slight";
+          color-scheme = "prefer-dark";
+          toolkit-accessibility = true;
+          text-scaling-factor = 0.92;
         };
 
         "org/gnome/desktop/background" = {
@@ -42,14 +50,6 @@
           ];
         };
 
-        "org/gnome/desktop/interface" = {
-          clock-show-weekday = true;
-          font-antialiasing = "grayscale";
-          font-hinting = "slight";
-          color-scheme = "prefer-dark";
-          toolkit-accessibility = true;
-        };
-
         "org/gnome/desktop/peripherals/mouse" = {
           natural-scroll = true;
           speed = 0.21052631578947367;
@@ -57,7 +57,6 @@
 
         "org/gnome/mutter" = {
           dynamic-workspaces = true;
-          edge-tiling = false;
         };
 
         "org/gnome/settings-daemon/plugins/color" = {
@@ -67,10 +66,6 @@
           night-light-temperature = mkUint32 3170;
         };
 
-        "org/gnome/desktop/wm/preferences" = {
-          button-layout = "close,minimize,maximize:appmenu";
-        };
-
         "org/gnome/shell" = {
           enabled-extensions = [
             "caffeine@patapon.info"
@@ -78,8 +73,42 @@
           ];
         };
 
-        "org/gnome/desktop/interface" = {
-          gtk-theme = "HighContrastInverse";
+        "org/gnome/shell/extensions/user-theme" = {
+          name = "Fluent-grey-Dark";
+        };
+
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = "appmenu:minimize,close";
+        };
+
+        "org/gnome/desktop/wm/keybindings" = {
+          begin-move = [ ];
+          begin-resize = [ "<Menu>" ];
+          cycle-group = [ ];
+          cycle-group-backward = [ ];
+          cycle-panels = [ ];
+          cycle-panels-backward = [ ];
+          cycle-windows = [ ];
+          cycle-windows-backward = [ ];
+          maximize = [ ];
+          minimize = [ ];
+          move-to-workspace-1 = [ ];
+          move-to-workspace-down = [ "<Control><Shift><Alt>Down" ];
+          move-to-workspace-up = [ "<Control><Shift><Alt>Up" ];
+          switch-applications = [ ];
+          switch-applications-backward = [ ];
+          switch-group = [ ];
+          switch-group-backward = [ ];
+          switch-panels = [ ];
+          switch-panels-backward = [ ];
+          switch-to-workspace-1 = [ ];
+          switch-to-workspace-down = [ "<Control><Alt>Down" ];
+          switch-to-workspace-last = [ ];
+          switch-to-workspace-left = [ "<Control><Alt>Left" ];
+          switch-to-workspace-right = [ "<Control><Alt>Right" ];
+          switch-to-workspace-up = [ ];
+          toggle-maximized = [ ];
+          unmaximize = [ ];
         };
       };
 }

@@ -19,8 +19,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nur.url = "github:nix-community/NUR";
-
-    catppuccin.url = "github:catppuccin/nix";
   };
     
   outputs =

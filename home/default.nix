@@ -1,4 +1,9 @@
-{ pkgs, config, inputs, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -8,7 +13,6 @@
     ./firefox
     ./terminal.nix
     ../modules/home-manager/emacs.nix
-    inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
   home.stateVersion = "24.05";
@@ -25,8 +29,15 @@
     fantasque-sans-mono
     libreoffice
     google-chrome
-    (aspellWithDicts
-      (dicts: with dicts; [ en en-computers en-science es fr ]))
+    (aspellWithDicts (
+      dicts: with dicts; [
+        en
+        en-computers
+        en-science
+        es
+        fr
+      ]
+    ))
   ];
 
   programs.git = {
@@ -36,7 +47,6 @@
     userEmail = "anasofitorresbe@gmail.com";
   };
 
-
   gtk = {
     enable = true;
     cursorTheme = {
@@ -45,4 +55,3 @@
     };
   };
 }
-

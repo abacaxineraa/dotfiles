@@ -6,25 +6,31 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 * Appearance
 ** Frame
 #+begin_src emacs-lisp
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (pixel-scroll-precision-mode)
+      (menu-bar-mode -1)
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)
+      (pixel-scroll-precision-mode)
 
-  (setopt frame-resize-pixelwise t
-          global-display-line-numbers-mode t
-          visible-bell t
-          line-spacing 2)
+      (setopt frame-resize-pixelwise t
+              global-display-line-numbers-mode t
+              visible-bell t
+              line-spacing 2)
+  
+    (setq default-frame-alist
+          (append ;
+           '((undecorated . t)
+             (drag-internal-border . t)
+             (internal-border-width . 4)
+             (alpha-background . 99))
+           default-frame-alist))
 
-  (add-to-list 'default-frame-alist '(alpha-background . 99))
-
-  (setopt left-margin-width 2)
-  (setopt right-margin-width 2)
+      (setopt left-margin-width 2)
+      (setopt right-margin-width 2)
 #+end_src
 
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(ef-bio ef-kassio exotica))
+  (defvar my-themes '(ef-day ef-night catppuccin))
 
   (defun cycle-themes ()
     (interactive)
