@@ -8,6 +8,7 @@
     swayidle
     wl-clipboard
     mako
+    albert
   ];
 
   services.swayosd = {
@@ -48,7 +49,7 @@
     		padding: 0.5rem;
 	    	border-radius: 0px;
 	    	background-color: #303241;
-	    }
+git	    }
 
 	    #entry {
 	        margin: 0.25rem 0.75rem 0.25rem 0.75rem;

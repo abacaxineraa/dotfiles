@@ -34,10 +34,9 @@ let
 in
 {
   imports = [
-    ./waybar.nix
+    ../wayland
     ./keybindings.nix
     ./programs.nix
-    # ../wayland
   ];
 
   home.packages = builtins.attrValues {
@@ -124,6 +123,14 @@ in
     name = "Numix";
     size = cursor-size;
     gtk.enable = true;
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "Numix";
+      package = pkgs.numix-cursor-theme;
+    };
   };
 }
 
