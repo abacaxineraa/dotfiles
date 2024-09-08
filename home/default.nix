@@ -46,12 +46,4 @@
     userName = "Ana Torres";
     userEmail = "anasofitorresbe@gmail.com";
   };
-
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "Numix";
-      package = pkgs.numix-cursor-theme;
-    };
-  };
 }

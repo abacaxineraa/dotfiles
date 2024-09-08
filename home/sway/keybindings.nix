@@ -52,6 +52,9 @@
           "${modifier}+s" = "exec ${menu}";
           "${modifier}+e" = "exec emacsclient -c";
           "${modifier}+t" = "exec ${terminal}";
+          "${modifier}+space" = "exec ${pkgs.albert}/bin/albert show";
+          #  "${modifier}+Shift+slash" = "exec ${lock-cmd}";
+          "${modifier}+i" = "layout tabbed";
         };
   };
 }
