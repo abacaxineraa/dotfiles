@@ -53,10 +53,5 @@
       name = "Numix";
       package = pkgs.numix-cursor-theme;
     };
-
-    theme = {
-      package = pkgs.catppuccin-gtk;
-      name = "Catppuccin";
-    };
   };
 }
