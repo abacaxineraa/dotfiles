@@ -15,7 +15,7 @@
 
     modifier = "Mod4";
     floating.modifier = modifier;
-    menu = "wofi --showrun";
+    menu = "tofi-drun | xargs swaymsg exec --";
     terminal = "alacritty";
 
     keybindings =
@@ -54,7 +54,6 @@
           "${modifier}+t" = "exec ${terminal}";
           "${modifier}+m" = "fullscreen toggle";
           "${modifier}+space" ="exec ${menu}";
-          #  "${modifier}+Shift+slash" = "exec ${lock-cmd}";
         };
   };
 }
