@@ -34,32 +34,33 @@ in
       { command = "exec ${idlecmd}"; always = true; }
     ];
     
-    keybindings = lib.mkOptionDefault {
-      # Multimedia
-      "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-      "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-      "Shift+XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl stop";
-      "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-      "XF86AudioRecord" = "exec ${pkgs.alsa-utils}/bin/amixer -q set Capture toggle";
-      "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master toggle";
-      "XF86AudioLowerVolume" = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master 3%-";
-      "XF86AudioRaiseVolume" = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master 3%+";
-      ## Backlight
-      "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl s 10%-";
-      "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl s 10%+";
+    keybindings =
+      lib.mkOptionDefault {
+        # Multimedia
+        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+        "Shift+XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl stop";
+        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -ui 2 && ${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -ud 2 && ${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
+        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || ${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
+        # Backlight
+        "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl s 10%-";
+        "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl s 10%+";
 
 
-      # Suspend
-      "--locked Ctrl+${modifier}+z" = "exec ${swaylockcmd}";
-      "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bi/slurp)\" - | wl-copy'";
-      "Shift+Print" = "exec ${pkgs.grim}/bin/grim - | wl-copy'";
+        # Suspend
+        "--locked Ctrl+${modifier}+z" = "exec ${swaylockcmd}";
+        "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bi/slurp)\" - | wl-copy'";
+        "Shift+Print" = "exec ${pkgs.grim}/bin/grim - | wl-copy'";
 
-      "${modifier}+f" = "exec ${pkgs.firefox-devedition}/bin/firefox-devedition";
-      "${modifier}+s" = "exec ${menu}";
-      "${modifier}+e" = "exec emacsclient -c";
-      "${modifier}+t" = "exec ${terminal}";
-      "${modifier}+m" = "fullscreen toggle";
-      "${modifier}+space" ="exec ${menu}";
-    };
+        "${modifier}+f" = "exec ${pkgs.firefox-devedition}/bin/firefox-devedition";
+        "${modifier}+s" = "exec ${menu}";
+        "${modifier}+e" = "exec emacsclient -c";
+        "${modifier}+t" = "exec ${terminal}";
+        "${modifier}+m" = "fullscreen toggle";
+        "${modifier}+space" ="exec ${menu}";
+      };
   };
 }

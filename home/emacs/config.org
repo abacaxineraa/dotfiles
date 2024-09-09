@@ -58,7 +58,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setopt highlight-indent-guides-method 'character)
 
-  (visual-line-mode)
+  (global-visual-line-mode t)
 #+end_src
 
 ** Modeline

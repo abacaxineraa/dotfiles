@@ -15,7 +15,7 @@
     wf-recorder
     wl-clipboard
     brightnessctl
-    alsa-utils
+    pamixer
     playerctl
     wob
   ];
