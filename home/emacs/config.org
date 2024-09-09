@@ -18,7 +18,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   
     (setq default-frame-alist
           (append ;
-           '((undecorated . t)
+           '(;;(undecorated . t)
              (drag-internal-border . t)
              (internal-border-width . 4)
              (alpha-background . 99))

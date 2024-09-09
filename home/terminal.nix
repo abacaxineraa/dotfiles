@@ -8,13 +8,13 @@
       font.size = 10;
       cursor.style.shape = "Beam";
       
-      window = {
-        decorations = "none";
-        blur = false;
-        opacity = 1;
-        padding.x = 15;
-        padding.y = 0;
-      };
+      # window = {
+      #   decorations = "none";
+      #   blur = false;
+      #   opacity = 1;
+      #   padding.x = 15;
+      #   padding.y = 0;
+      # };
       
       import = [
         "${pkgs.alacritty-theme}/catppuccin_mocha.toml"

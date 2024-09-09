@@ -1,19 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  css = ''
-    .window-frame, .window-frame:backdrop {
-      box-shadow: 0 0 0 black;
-      border-style: none;
-      margin: 0;
-      border-radius: 0;
-    }
-    .titlebar {
-      border-radius: 0;
-    }
-  '';
-in
-
 {
   imports = [ ./dconf.nix ];
 

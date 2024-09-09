@@ -107,7 +107,7 @@
           switch-to-workspace-left = [ "<Control><Alt>Left" ];
           switch-to-workspace-right = [ "<Control><Alt>Right" ];
           switch-to-workspace-up = [ ];
-          toggle-maximized = [ ];
+          toggle-maximized = [ "<Super>m" ];
           unmaximize = [ ];
         };
       };
