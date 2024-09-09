@@ -4,16 +4,12 @@ let
   cursor-size = 20;
 in
 {
-  home.packages = with pkgs; [ numix-cursor-theme dconf ];
+  home.packages = with pkgs; [ numix-cursor-theme ];
   gtk.enable = true;
-  xsession.enable = true;
+  gtk.cursorTheme.name = cursor-theme;
+  gtk.cursorTheme.size = cursor-size;
 
-  home.pointerCursor = {
-    gtk.enable =true;
-    package = pkgs.numix-cursor-theme;
-    name = cursor-theme;
-    size = cursor-size;
-  };
+  xsession.enable = true;
 
   home.sessionVariables = {
     XCURSOR_THEME = cursor-theme;
@@ -23,7 +19,4 @@ in
   wayland.windowManager.sway.config.seat."*" = {
     xcursor_theme = "${cursor-theme} ${toString cursor-size}";
   };
- 
-  gtk.cursorTheme.name = cursor-theme;
-  gtk.cursorTheme.size = cursor-size;
 }

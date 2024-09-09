@@ -17,7 +17,10 @@ in
 
     config = {
       bars = [ ];
-      startup = [ { command = "firefox-devedition"; } ];
+      startup = [
+        { command = "firefox-devedition"; }
+        { command = "swaymsg workspace 1"; }
+      ];
 
       focus.followMouse = true;
       workspaceAutoBackAndForth = true;
@@ -40,11 +43,28 @@ in
         };
       };
 
-      colors = let borderActive = "#101010"; borderInactive = "#000000"; in {
-        "focused" = { border = borderActive; background = borderActive; text = "#404040"; indicator = "#ffffff"; childBorder = borderActive; };
-        "unfocused" = { border = borderInactive; background = borderInactive; text = "#202020"; indicator = "#ffffff"; childBorder = borderInactive; };
-      };
-      
+      colors =
+        let
+          borderActive = "#101010";
+          borderInactive = "#000000";
+        in
+        {
+          "focused" = {
+            border = borderActive;
+            background = borderActive;
+            text = "#404040";
+            indicator = "#ffffff";
+            childBorder = borderActive;
+          };
+          "unfocused" = {
+            border = borderInactive;
+            background = borderInactive;
+            text = "#202020";
+            indicator = "#ffffff";
+            childBorder = borderInactive;
+          };
+        };
+
       window.hideEdgeBorders = "smart";
       window.border = 4;
       window.titlebar = false;
@@ -62,7 +82,7 @@ in
           };
           command = "floating enable";
         }
-      ];   
+      ];
     };
   };
 }

@@ -5,7 +5,7 @@
     ./keybindings.nix
     ./sway.nix
     ./waybar.nix
-    ./theme.nix
+    ./cursor.nix
     ./monitors.nix
   ];
 
