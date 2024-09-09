@@ -5,7 +5,6 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      font.size = 11;
       cursor.style.shape = "Beam";
   
       window = {
@@ -15,10 +14,10 @@
         padding.x = 15;
         padding.y = 0;
       };
-      
-      font.normal = {
-family = "Fantasque Sans Mono";
-style = "Regular";
+
+      font = {
+        normal.family = "JetBrains Mono";
+        size = 9;
       };
       
       import = [

@@ -22,8 +22,8 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
              (alpha-background . 99))
            default-frame-alist))
 
-      (setopt left-margin-width 2)
-      (setopt right-margin-width 2)
+      (setopt left-margin-width 0)
+      (setopt right-margin-width 0)
 #+end_src
 
 ** Themes
@@ -45,7 +45,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** Font
 #+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono"))
+  (add-to-list 'default-frame-alist '(font . "JetBrains Mono 9"))
 #+end_src
 
 ** Cursor

@@ -14,8 +14,8 @@
         "eDP-1"
       ];
 
-      modules-left = [ "custom/logo" "sway/workspaces" "sway/mode" ];
-      modules-right = [ "sway/language" "clock" "battery" ];
+      modules-left = [ "sway/workspaces" ];
+      modules-right = [ "clock" "battery" ];
 
       "sway/workspaces" = {
         disable-scroll = true;
@@ -49,26 +49,25 @@
         }
 
         window#waybar {
-          background: #292828;
-          color: #ffffff;
+          background: #000000;
+          color: #505050;
         }
-      
       
         #workspaces button {
           margin-right: 10px;
-          color: #ffffff;
+          color: #505050;
         }
         #workspaces button:hover, #workspaces button:active {
-          background-color: #292828;
-          color: #ffffff;
+          background-color: #000000;
+          color: #202020;
         }
         #workspaces button.focused {
-          background-color: #383737;
+          background-color: #101010;
         }
 
         #battery {
           margin-left: 7px;
-          margin-right: 3px;
+          margin-right: 5px;
         }
          '';
 }

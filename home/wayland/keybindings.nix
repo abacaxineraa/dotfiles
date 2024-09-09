@@ -5,7 +5,7 @@
   ...
 }:
 let
-  swaylockcmd = "${pkgs.swaylock}/bin/swaylock -c '#020202'";
+  swaylockcmd = "${pkgs.swaylock}/bin/swaylock -c 000000 --ring-color 404040 --key-hl-color 999999";
   idlecmd = pkgs.writeShellScript "swayidle.sh" ''
     ${pkgs.swayidle}/bin/swayidle \
     before-sleep "${swaylockcmd}" \
@@ -52,7 +52,7 @@ in
 
         # Suspend
         "--locked Ctrl+${modifier}+z" = "exec ${swaylockcmd}";
-        "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bi/slurp)\" - | wl-copy'";
+        "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy'";
         "Shift+Print" = "exec ${pkgs.grim}/bin/grim - | wl-copy'";
 
         "${modifier}+f" = "exec ${pkgs.firefox-devedition}/bin/firefox-devedition";

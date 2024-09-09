@@ -26,18 +26,22 @@
     godot_4
     unzip
     evince
-    fantasque-sans-mono
+
+    quattrocento-sans
+    jetbrains-mono
+    martian-mono
+    
     libreoffice
-    google-chrome
-    (aspellWithDicts (
-      dicts: with dicts; [
-        en
-        en-computers
-        en-science
-        es
-        fr
-      ]
-    ))
+        google-chrome
+        (aspellWithDicts (
+          dicts: with dicts; [
+            en
+            en-computers
+            en-science
+            es
+            fr
+          ]
+        ))
   ];
 
   programs.git = {
