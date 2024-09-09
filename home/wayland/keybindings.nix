@@ -60,7 +60,6 @@ in
         "${modifier}+e" = "exec emacsclient -c";
         "${modifier}+t" = "exec ${terminal}";
         "${modifier}+m" = "fullscreen toggle";
-        "${modifier}+space" ="exec ${menu}";
       };
   };
 }

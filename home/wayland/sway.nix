@@ -12,14 +12,12 @@ in
 {
   wayland.windowManager.sway = {
     enable = true;
-    extraConfig = ''
-      for_window [title="Menu"] floating enable  '';
     wrapperFeatures.gtk = true;
     systemd.enable = true;
 
-    
     config = {
       bars = [ ];
+      startup = [ { command = "firefox-devedition"; } ];
 
       focus.followMouse = true;
       workspaceAutoBackAndForth = true;
@@ -46,13 +44,12 @@ in
         "focused" = { border = borderActive; background = borderActive; text = "#404040"; indicator = "#ffffff"; childBorder = borderActive; };
         "unfocused" = { border = borderInactive; background = borderInactive; text = "#202020"; indicator = "#ffffff"; childBorder = borderInactive; };
       };
- 
+      
       window.hideEdgeBorders = "smart";
       window.border = 4;
       window.titlebar = false;
       window.commands = [
         # { criteria = { app_id = "mpv"; }; command = "sticky enable"; }
-        # { criteria = { app_id = "mpv"; }; command = "floating enable"; }
         {
           criteria = {
             title = "^(.*) Indicator";
@@ -66,20 +63,6 @@ in
           command = "floating enable";
         }
       ];   
-
-      startup = [ { command = "firefox-devedition"; } ];
-
-      # output = {
-      #   "*" =
-      #     "${out_aw25}" = {
-      #       scale = "1.0";
-      #       mode = "1920x1080@240Hz";
-      #       adaptive_sync = "enable";
-      #       subpixel = "rgb";
-      #       render_bit_depth = "10";
-      #     };
-      # };
-      
     };
   };
 }

@@ -39,7 +39,6 @@
   };
 
   programs.waybar.style = ''
-      
         * {
           border: none;
           border-radius: 0;
