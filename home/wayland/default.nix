@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./keybindings.nix
-    ./theme.nix
-    ./waybar.nix
+     ./keybindings.nix
+     ./sway.nix
+     ./waybar.nix
   ];
 
   home.packages = with pkgs; [
@@ -14,7 +14,18 @@
     swayidle
     wf-recorder
     wl-clipboard
+    brightnessctl
+    alsa-utils
+    playerctl
+    wob
   ];
+
+  home.pointerCursor = {
+    package = pkgs.numix-cursor-theme;
+    name = "Numix";
+    size = 20;
+    gtk.enable = true;
+  };
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = 1;
@@ -34,6 +45,13 @@
 
   programs.swaylock.enable =true;
 
-  programs.tofi.enable = true;
+  programs.tofi.enable = true;  
+  
+  services.kanshi = {
+    enable = true;
+    profiles = {
+      #
+    };
+  };
   
 }

@@ -9,13 +9,6 @@ let
   
 in
 {
-  home.pointerCursor = {
-    package = pkgs.numix-cursor-theme;
-    name = "Numix";
-    size = 20;
-    gtk.enable = true;
-  };
-
   # https://shen.hong.io/nixos-home-manager-wayland-sway/
   # https://nix-community.github.io/home-manager/options.xhtml#opt-wayland.windowManager.sway.config
   # https://github.com/smravec/nixos-config/blob/f32f40ad80b38222493df36b4e59d79484e44def/nixos/wayland/window-manager.nix#L37
@@ -54,7 +47,7 @@ in
       fonts = {
         names = [ "FiraCode Nerd Font" ];
         style = "Regular";
-        size = 12.0;
+        size = 10.0;
       };
 
       startup = [

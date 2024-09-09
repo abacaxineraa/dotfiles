@@ -66,10 +66,6 @@
           background-color: #383737;
         }
 
-        #language {
-          margin-right: 7px;		
-        }
-
         #battery {
           margin-left: 7px;
           margin-right: 3px;

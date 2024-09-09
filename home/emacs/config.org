@@ -57,13 +57,15 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 #+begin_src emacs-lisp
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setopt highlight-indent-guides-method 'character)
+
+  (visual-line-mode)
 #+end_src
 
 ** Modeline
 #+begin_src emacs-lisp
   (require 'telephone-line)
-  (setopt telephone-line-primary-right-separator 'telephone-line-tan-left
-          telephone-line-secondary-right-separator 'telephone-line-tan-left
+  (setopt telephone-line-primary-right-separator 'telephone-line-flat
+          telephone-line-secondary-right-separator 'telephone-line-flat
           telephone-line-primary-left-separator 'telephone-line-flat
           telephone-line-height 20)
   (telephone-line-mode 1)

@@ -8,7 +8,7 @@
 {
   imports = [
     ./vpn
-    ./sway
+    ./wayland
     ./emacs
     ./firefox
     ./terminal.nix
