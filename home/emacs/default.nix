@@ -20,6 +20,7 @@
         which-key
         nix-mode
         aggressive-indent
+        highlight-indent-guides
 
         corfu
         corfu-terminal
@@ -42,12 +43,14 @@
         auctex
         cdlatex
 
-        lsp-mode
-        lsp-ui
+        eglot
+        flycheck-eglot
 
         pdf-tools
         org-noter
-
+        org-pdftools
+        org-noter-pdftools
+        
         telephone-line
         avy
         jinx
@@ -58,6 +61,7 @@
       texlive.combined.scheme-full
       wl-clipboard
       nix
+      # rnix-lsp
       python3 # For treemacs
     ];
   };

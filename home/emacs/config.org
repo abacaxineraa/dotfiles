@@ -19,13 +19,11 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
     (setq default-frame-alist
           (append ;
            '(;;(undecorated . t)
-             (drag-internal-border . t)
-             (internal-border-width . 4)
              (alpha-background . 99))
            default-frame-alist))
 
-      (setopt left-margin-width 2)
-      (setopt right-margin-width 2)
+      (setopt left-margin-width 0)
+      (setopt right-margin-width 0)
 #+end_src
 
 ** Themes
@@ -47,7 +45,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** Font
 #+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono"))
+  (add-to-list 'default-frame-alist '(font . "JetBrains Mono 10"))
 #+end_src
 
 ** Cursor
@@ -55,11 +53,19 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (setopt cursor-type '(bar . 3))
 #+end_src
 
+** Indent lines
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setopt highlight-indent-guides-method 'character)
+
+  (global-visual-line-mode t)
+#+end_src
+
 ** Modeline
 #+begin_src emacs-lisp
   (require 'telephone-line)
-  (setopt telephone-line-primary-right-separator 'telephone-line-tan-left
-          telephone-line-secondary-right-separator 'telephone-line-tan-left
+  (setopt telephone-line-primary-right-separator 'telephone-line-flat
+          telephone-line-secondary-right-separator 'telephone-line-flat
           telephone-line-primary-left-separator 'telephone-line-flat
           telephone-line-height 20)
   (telephone-line-mode 1)
@@ -97,24 +103,23 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
           completion-ignore-case t
           read-extended-command-predicate #'command-completion-default-include-p)
 
-  (require 'lsp-mode)
-  (setopt lsp-keymap-prefix "C-c l")
-  (add-hook 'nix-mode-hook #'lsp-deferred)
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'eglot)
+  (require 'flycheck-eglot)
+  (global-flycheck-eglot-mode 1)
 
-  (require 'corfu)
-  (setopt corfu-auto t)
-  (global-corfu-mode)
+    (require 'corfu)
+    (setopt corfu-auto t)
+    (global-corfu-mode)
 
-  (require 'vertico)
-  (setopt vertico-count 15
-          vertico-resize nil
-          vertico-cycle t)
-  (vertico-mode)
+    (require 'vertico)
+    (setopt vertico-count 15
+            vertico-resize nil
+            vertico-cycle t)
+    (vertico-mode)
 
-  (require 'marginalia)
-  (setopt marginalia-align 'right)
-  (marginalia-mode)
+    (require 'marginalia)
+    (setopt marginalia-align 'right)
+    (marginalia-mode)
 #+end_src
 
 ** Linting
@@ -312,8 +317,47 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** PDF Annotation
 #+begin_src emacs-lisp
-  ;; https://github.com/org-noter/org-noter
-  ;; https://github.com/fuxialexander/org-pdftools
+    (require 'pdf-tools)
+    (pdf-tools-install)
+
+    (defun pdf-side-effects ()
+    (pdf-tools-enable-minor-modes)
+    (display-line-numbers-mode -1)
+    (visual-line-mode -1))
+  
+    ;; (require 'org-noter)
+        ;; (require 'org-pdftools)
+        ;; (require 'org-noter-pdftools)
+
+        ;; (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+        ;;   (interactive "P")
+        ;;   (org-noter--with-valid-session
+        ;;    (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+        ;;                                                  (not org-noter-insert-note-no-questions)
+        ;;                                                org-noter-insert-note-no-questions))
+        ;;          (org-pdftools-use-isearch-link t)
+        ;;          (org-pdftools-use-freepointer-annot t))
+        ;;      (org-noter-insert-note (org-noter--get-precise-info)))))
+
+        ;; (defun org-noter-set-start-location (&optional arg)
+        ;;   "When opening a session with this document, go to the current location.
+        ;; With a prefix ARG, remove start location."
+        ;;   (interactive "P")
+        ;;   (org-noter--with-valid-session
+        ;;    (let ((inhibit-read-only t)
+        ;;          (ast (org-noter--parse-root))
+        ;;          (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+        ;;      (with-current-buffer (org-noter--session-notes-buffer session)
+        ;;        (org-with-wide-buffer
+        ;;         (goto-char (org-element-property :begin ast))
+        ;;         (if arg
+        ;;             (org-entry-delete nil org-noter-property-note-location)
+        ;;           (org-entry-put nil org-noter-property-note-location
+        ;;                          (org-noter--pretty-print-location location))))))))
+        ;; (with-eval-after-load 'pdf-annot
+        ;;   (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+        (setopt org-descriptive-links nil)
 #+end_src
 * Misc
 #+begin_src emacs-lisp

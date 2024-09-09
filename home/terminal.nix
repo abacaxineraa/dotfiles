@@ -5,16 +5,19 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      font.size = 10;
+      font = {
+        normal.family = "JetBrains Mono";
+        size = 10;
+      };
+      
       cursor.style.shape = "Beam";
       
-      # window = {
-      #   decorations = "none";
-      #   blur = false;
-      #   opacity = 1;
-      #   padding.x = 15;
-      #   padding.y = 0;
-      # };
+      window = {
+        blur = false;
+        opacity = 1;
+        padding.x = 15;
+        padding.y = 0;
+      };
       
       import = [
         "${pkgs.alacritty-theme}/catppuccin_mocha.toml"

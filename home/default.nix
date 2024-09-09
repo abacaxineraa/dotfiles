@@ -26,9 +26,9 @@
     godot_4
     unzip
     evince
-    fantasque-sans-mono
     libreoffice
     google-chrome
+    jetbrains-mono
     (aspellWithDicts (
       dicts: with dicts; [
         en
