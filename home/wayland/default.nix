@@ -19,6 +19,7 @@
     pamixer
     playerctl
     wob
+    numix-cursor-theme
   ];
 
   home.sessionVariables = {
@@ -33,6 +34,9 @@
     XDG_SESSION_DESKTOP="sway";
     XDG_CURRENT_DESKTOP="sway";
     JAVA_AWT_WM_NONREPARENTING=1;
+
+    XDG_CONFIG_HOME = "\${HOME}/.config";
+    XCURSOR_SIZE = "24";
   };
 
   xdg.portal = {

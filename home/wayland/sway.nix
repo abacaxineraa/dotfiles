@@ -13,9 +13,7 @@ in
   wayland.windowManager.sway = {
     enable = true;
     extraConfig = ''
-      for_window [title="Menu"] floating enable
- seat seat0 xcursor_theme "Numix" 20
-    '';
+      for_window [title="Menu"] floating enable  '';
     wrapperFeatures.gtk = true;
     systemd.enable = true;
 
