@@ -18,7 +18,6 @@ in
   wayland.windowManager.sway.extraConfig = ''
       bindgesture swipe:right workspace prev
       bindgesture swipe:left workspace next
-bindgesture swipe:down ${swaylockcmd}
 
       bindgesture pinch:inward fullscreen disable
       bindgesture pinch:outward fullscreen enable
