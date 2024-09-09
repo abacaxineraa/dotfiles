@@ -317,7 +317,10 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** PDF Annotation
 #+begin_src emacs-lisp
-  ;; (require 'pdf-tools)
+(require 'pdf-tools)
+(pdf-tools-install)
+(add-hook 'pdf-view-mode-hook 'pdf-tools-enable-minor-modes)
+  
   ;; (require 'org-noter)
   ;; (require 'org-pdftools)
   ;; (require 'org-noter-pdftools)
