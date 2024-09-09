@@ -14,8 +14,9 @@ let
       config.boot.kernelPackages.nvidiaPackages.stable
     else
       config.boot.kernelPackages.nvidiaPackages.beta;
-
+  
   extraEnv = {
+    WLR_DRM_NO_MODIFIERS = "1";
     WLR_DRM_NO_ATOMIC = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
     LIBVA_DRIVER_NAME = "nvidia";
@@ -26,9 +27,10 @@ let
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_RENDERER = "vulkan";
+    GDK_BACKEND="wayland";
   };
 in
-{
+{  
   config = {
     home-manager.users.${username} =
       { pkgs, ... }:
@@ -59,6 +61,7 @@ in
       opengl = {
         enable = true;
         driSupport = true;
+        driSupport32Bit = true;
       };
     };
 

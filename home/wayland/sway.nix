@@ -17,9 +17,24 @@ in
 
     config = {
       bars = [ ];
+      assigns = {
+        "3" = [{class = "discord";}];
+        "4" = [{class = "Spotify";}];
+      };
+      
       startup = [
-        { command = "firefox-devedition"; }
         { command = "swaymsg workspace 1"; }
+        { command = "firefox-devedition"; }
+        # {
+        #   command = ''
+        #        ${pkgs.swayidle}/bin/swayidle -w \
+        #          timeout 120 '${pkgs.coreutils}/bin/echo `xbacklight -get` > /tmp/bn && xbacklight -set 10 -fps 20' \
+        #            resume 'xbacklight -set `${pkgs.coreutils}/bin/cat /tmp/bn` -fps 20' \
+        #          timeout 240 'swaylock -i ${lock_bg} -f -c 000000 && ${pkgs.sway-unwrapped}/bin/swaymsg  "output * dpms off"' \
+        #            resume '${pkgs.sway-unwrapped}/bin/swaymsg "output * dpms on"' \
+        #          before-sleep 'swaylock -i ${lock_bg} -f -c 000000'
+        #      '';
+        # }
       ];
 
       focus.followMouse = true;
