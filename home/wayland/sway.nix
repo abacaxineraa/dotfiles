@@ -24,7 +24,7 @@ in
 
       focus.followMouse = true;
       workspaceAutoBackAndForth = true;
-
+      
       input = {
         "type:pointer" = {
           natural_scroll = "enabled";
@@ -48,22 +48,22 @@ in
           borderActive = "#101010";
           borderInactive = "#000000";
         in
-        {
-          "focused" = {
-            border = borderActive;
-            background = borderActive;
-            text = "#404040";
-            indicator = "#ffffff";
-            childBorder = borderActive;
+          {
+            "focused" = {
+              border = borderActive;
+              background = borderActive;
+              text = "#404040";
+              indicator = "#ffffff";
+              childBorder = borderActive;
+            };
+            "unfocused" = {
+              border = borderInactive;
+              background = borderInactive;
+              text = "#202020";
+              indicator = "#ffffff";
+              childBorder = borderInactive;
+            };
           };
-          "unfocused" = {
-            border = borderInactive;
-            background = borderInactive;
-            text = "#202020";
-            indicator = "#ffffff";
-            childBorder = borderInactive;
-          };
-        };
 
       window.hideEdgeBorders = "smart";
       window.border = 4;
