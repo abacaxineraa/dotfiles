@@ -65,8 +65,19 @@
       texlive.combined.scheme-full
       wl-clipboard
       nix
+      roboto-mono
       # rnix-lsp
       python3 # For treemacs
+      
+      (aspellWithDicts (
+        dicts: with dicts; [
+          en
+          en-computers
+          en-science
+          es
+          fr
+        ]
+      ))
     ];
   };
 
