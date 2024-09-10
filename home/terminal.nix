@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       font = {
-        normal.family = "JetBrains Mono";
+        normal.family = "Roboto Mono";
         size = 10;
       };
       

@@ -28,7 +28,9 @@
     evince
     libreoffice
     google-chrome
-    jetbrains-mono
+
+    roboto-mono
+    
     (aspellWithDicts (
       dicts: with dicts; [
         en

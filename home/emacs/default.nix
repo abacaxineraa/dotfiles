@@ -15,6 +15,11 @@
       epkgs: with epkgs; [
         ef-themes
         catppuccin-theme
+        modus-themes
+        telephone-line
+        org-modern
+        perfect-margin
+        valign
 
         flycheck
         which-key
@@ -50,8 +55,7 @@
         org-noter
         org-pdftools
         org-noter-pdftools
-        
-        telephone-line
+
         avy
         jinx
       ];

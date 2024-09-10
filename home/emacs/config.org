@@ -9,26 +9,33 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
       (menu-bar-mode -1)
       (tool-bar-mode -1)
       (scroll-bar-mode -1)
-      (pixel-scroll-precision-mode)
+    (pixel-scroll-precision-mode)
+  
+
+    (setq-default scroll-conservatively 101
+                  scroll-margin 2 
+                  recenter-positions '(5 bottom))
 
       (setopt frame-resize-pixelwise t
               global-display-line-numbers-mode t
               visible-bell t
               line-spacing 2)
-  
-    (setq default-frame-alist
-          (append ;
-           '(;;(undecorated . t)
-             (alpha-background . 99))
-           default-frame-alist))
 
-      (setopt left-margin-width 0)
-      (setopt right-margin-width 0)
+      (setq default-frame-alist
+            (append ;
+             '(;;(undecorated . t)
+               (alpha-background . 99)
+               (internal-border-width . 7))
+             default-frame-alist))
+
+    (require 'perfect-margin)
+    (setopt perfect-margin-visible-width 128
+            perfect-margin-only-set-left-margin nil)
+    (perfect-margin-mode 1)
 #+end_src
-
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(ef-day ef-night catppuccin))
+  (defvar my-themes '(ef-day ef-night catppuccin modus-operandi-tinted))
 
   (defun cycle-themes ()
     (interactive)
@@ -42,12 +49,19 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (load-theme (car my-themes) t)
   (global-set-key (kbd "C-\\") 'cycle-themes)
 #+end_src
-
 ** Font
 #+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist '(font . "JetBrains Mono 10"))
-#+end_src
+  (add-to-list 'default-frame-alist '(font . "Roboto Mono 10"))
 
+  (setq-default fill-column 80                 
+                    sentence-end-double-space nil       
+                    bidi-paragraph-direction 'left-to-right 
+                    truncate-string-ellipsis "…")        
+
+  (setopt x-underline-at-descent-line nil
+        x-use-underline-position-properties t
+        underline-minimum-offset 10)
+#+end_src
 ** Cursor
 #+begin_src emacs-lisp
   (setopt cursor-type '(bar . 3))
@@ -58,7 +72,10 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setopt highlight-indent-guides-method 'character)
 
-  (global-visual-line-mode t)
+  
+(add-hook 'text-mode-hook 'visual-line-mode)
+(add-hook 'prog-mode-hook 'visual-line-mode)
+
 #+end_src
 
 ** Modeline
@@ -86,8 +103,9 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 #+begin_src emacs-lisp
   (require 'treemacs)
   (setopt treemacs-user-mode-line-format 'none
-          treemacs-position 'right)
+          treemacs-position 'left)
   (global-set-key (kbd "C-t") 'treemacs)
+  (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
 #+end_src
 
 * Editing
@@ -193,7 +211,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 #+end_src
 
 * Org Mode
-** Apparence
+** Appearance
 #+begin_src emacs-lisp
   (setopt initial-major-mode 'org-mode
           initial-scratch-message "#+title: scratch buffer\n")
@@ -217,10 +235,10 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (add-hook 'org-mode-hook 'visual-line-mode)
 
   (require 'org-superstar)
-  (add-hook 'org-mode-hook #'org-superstar-mode)
+  (add-hook 'org-mode-hook 'org-superstar-mode)
 
   (require 'org-appear)
-  (add-hook 'org-mode-hook #'org-appear-mode)
+  (add-hook 'org-mode-hook 'org-appear-mode)
 
        (setq org-emphasis-alist
        '(("*" bold)
@@ -230,7 +248,16 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
          ("~" org-code verbatim)
          ("+" (:strike-through t))))
 #+end_src
+*** Tables and symbols
+#+begin_src emacs-lisp
+  (require 'valign)
+  (setopt valign-fancy-bar t)
+  (add-hook 'org-mode-hook 'valign-mode)
 
+ ;;   (require 'org-modern)
+ ;; (setopt org-modern-table nil)
+  ;;(add-hook 'org-mode-hook 'org-modern-mode)
+#+end_src
 ** Editing
 *** Spell checking
 #+begin_src emacs-lisp
@@ -317,47 +344,51 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** PDF Annotation
 #+begin_src emacs-lisp
-    (require 'pdf-tools)
-    (pdf-tools-install)
+  (require 'pdf-tools)
+  (pdf-tools-install)
 
-    (defun pdf-side-effects ()
-    (pdf-tools-enable-minor-modes)
-    (display-line-numbers-mode -1)
-    (visual-line-mode -1))
-  
-    ;; (require 'org-noter)
-        ;; (require 'org-pdftools)
-        ;; (require 'org-noter-pdftools)
+  (defun pdf-side-effects ()
+  (pdf-tools-enable-minor-modes)
+  (display-line-numbers-mode -1)
+  (visual-line-mode -1))
+  (setopt pdf-view-use-scaling t
+              pdf-view-use-imagemagick nil)
 
-        ;; (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
-        ;;   (interactive "P")
-        ;;   (org-noter--with-valid-session
-        ;;    (let ((org-noter-insert-note-no-questions (if toggle-no-questions
-        ;;                                                  (not org-noter-insert-note-no-questions)
-        ;;                                                org-noter-insert-note-no-questions))
-        ;;          (org-pdftools-use-isearch-link t)
-        ;;          (org-pdftools-use-freepointer-annot t))
-        ;;      (org-noter-insert-note (org-noter--get-precise-info)))))
+  (add-hook 'pdf-view-mode #'pdf-side-effects)
 
-        ;; (defun org-noter-set-start-location (&optional arg)
-        ;;   "When opening a session with this document, go to the current location.
-        ;; With a prefix ARG, remove start location."
-        ;;   (interactive "P")
-        ;;   (org-noter--with-valid-session
-        ;;    (let ((inhibit-read-only t)
-        ;;          (ast (org-noter--parse-root))
-        ;;          (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
-        ;;      (with-current-buffer (org-noter--session-notes-buffer session)
-        ;;        (org-with-wide-buffer
-        ;;         (goto-char (org-element-property :begin ast))
-        ;;         (if arg
-        ;;             (org-entry-delete nil org-noter-property-note-location)
-        ;;           (org-entry-put nil org-noter-property-note-location
-        ;;                          (org-noter--pretty-print-location location))))))))
-        ;; (with-eval-after-load 'pdf-annot
-        ;;   (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+  ;; (require 'org-noter)
+      ;; (require 'org-pdftools)
+      ;; (require 'org-noter-pdftools)
 
-        (setopt org-descriptive-links nil)
+      ;; (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+      ;;   (interactive "P")
+      ;;   (org-noter--with-valid-session
+      ;;    (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+      ;;                                                  (not org-noter-insert-note-no-questions)
+      ;;                                                org-noter-insert-note-no-questions))
+      ;;          (org-pdftools-use-isearch-link t)
+      ;;          (org-pdftools-use-freepointer-annot t))
+      ;;      (org-noter-insert-note (org-noter--get-precise-info)))))
+
+      ;; (defun org-noter-set-start-location (&optional arg)
+      ;;   "When opening a session with this document, go to the current location.
+      ;; With a prefix ARG, remove start location."
+      ;;   (interactive "P")
+      ;;   (org-noter--with-valid-session
+      ;;    (let ((inhibit-read-only t)
+      ;;          (ast (org-noter--parse-root))
+      ;;          (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+      ;;      (with-current-buffer (org-noter--session-notes-buffer session)
+      ;;        (org-with-wide-buffer
+      ;;         (goto-char (org-element-property :begin ast))
+      ;;         (if arg
+      ;;             (org-entry-delete nil org-noter-property-note-location)
+      ;;           (org-entry-put nil org-noter-property-note-location
+      ;;                          (org-noter--pretty-print-location location))))))))
+      ;; (with-eval-after-load 'pdf-annot
+      ;;   (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+      (setopt org-descriptive-links nil)
 #+end_src
 * Misc
 #+begin_src emacs-lisp
