@@ -1,7 +1,10 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = [ pkgs.alacritty-theme ];
+  home.packages = with pkgs; [
+    alacritty-theme
+    roboto-mono
+  ];
   programs.alacritty = {
     enable = true;
     settings = {
@@ -9,23 +12,20 @@
         normal.family = "Roboto Mono";
         size = 10;
       };
-      
+
       cursor.style.shape = "Beam";
-      
+
       window = {
         blur = false;
         opacity = 1;
         padding.x = 15;
         padding.y = 0;
       };
-      
-      import = [
-        "${pkgs.alacritty-theme}/catppuccin_mocha.toml"
-      ];
+
+      import = [ "${pkgs.alacritty-theme}/catppuccin_mocha.toml" ];
     };
   };
 
-  
   programs = {
     fish = {
       enable = true;
