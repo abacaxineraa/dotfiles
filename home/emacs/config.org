@@ -17,11 +17,10 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
                   recenter-positions '(5 bottom))
 
       (setopt frame-resize-pixelwise t
-              global-display-line-numbers-mode t
               visible-bell t
               line-spacing 2)
 
-      (setq default-frame-alist
+      (setopt default-frame-alist
             (append ;
              '(;;(undecorated . t)
                (alpha-background . 99)
@@ -29,13 +28,13 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
              default-frame-alist))
 
     (require 'perfect-margin)
-    (setopt perfect-margin-visible-width 128
+    (setopt perfect-margin-visible-width 110
             perfect-margin-only-set-left-margin nil)
     (perfect-margin-mode 1)
 #+end_src
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(ef-day ef-night catppuccin modus-operandi-tinted))
+  (defvar my-themes '(ef-day ef-bio catppuccin modus-operandi-tinted))
 
   (defun cycle-themes ()
     (interactive)
@@ -69,13 +68,14 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** Indent lines
 #+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (setopt highlight-indent-guides-method 'character)
+    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+    (setopt highlight-indent-guides-method 'character)
 
+
+  (add-hook 'text-mode-hook 'visual-line-mode)
+  (add-hook 'prog-mode-hook 'visual-line-mode)
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   
-(add-hook 'text-mode-hook 'visual-line-mode)
-(add-hook 'prog-mode-hook 'visual-line-mode)
-
 #+end_src
 
 ** Modeline
@@ -105,7 +105,6 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (setopt treemacs-user-mode-line-format 'none
           treemacs-position 'left)
   (global-set-key (kbd "C-t") 'treemacs)
-  (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
 #+end_src
 
 * Editing
@@ -349,7 +348,6 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
   (defun pdf-side-effects ()
   (pdf-tools-enable-minor-modes)
-  (display-line-numbers-mode -1)
   (visual-line-mode -1))
   (setopt pdf-view-use-scaling t
               pdf-view-use-imagemagick nil)
