@@ -5,19 +5,18 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      font = {
+        normal.family = "Roboto Mono";
+        size = 10;
+      };
+      
       cursor.style.shape = "Beam";
-  
+      
       window = {
-        decorations = "none";
         blur = false;
         opacity = 1;
         padding.x = 15;
         padding.y = 0;
-      };
-
-      font = {
-        normal.family = "Roboto Mono 10";
-        size = 9;
       };
       
       import = [
