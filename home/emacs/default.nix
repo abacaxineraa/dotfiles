@@ -58,6 +58,8 @@
 
         avy
         jinx
+
+        magit
       ];
 
     extraPathPackages = with pkgs; [
@@ -68,16 +70,6 @@
       roboto-mono
       # rnix-lsp
       python3 # For treemacs
-      
-      (aspellWithDicts (
-        dicts: with dicts; [
-          en
-          en-computers
-          en-science
-          es
-          fr
-        ]
-      ))
     ];
   };
 

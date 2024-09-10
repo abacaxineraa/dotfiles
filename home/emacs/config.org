@@ -91,13 +91,13 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** Icons
 #+begin_src emacs-lisp
-  (require 'all-the-icons)
+  ;; (require 'all-the-icons)
 
-  (require 'all-the-icons-dired)
-  (add-hook 'dired-mode-hook #'all-the-icons-dired-mode)
+  ;; (require 'all-the-icons-dired)
+  ;; (add-hook 'dired-mode-hook #'all-the-icons-dired-mode)
 
-  (require 'all-the-icons-completion)
-  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
+  ;; (require 'all-the-icons-completion)
+  ;; (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
 #+end_src
 
 ** File Tree
@@ -172,6 +172,10 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
           tramp-auto-save-directory auto-saves-dir))
 #+end_src
 
+** MaGit
+#+begin_src emacs-lisp
+  (require 'magit)
+#+end_src
 ** Navigation
 #+begin_src emacs-lisp
   (require 'avy)

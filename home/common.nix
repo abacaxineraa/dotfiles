@@ -13,6 +13,16 @@
     evince
     libreoffice
     google-chrome
+
+    (aspellWithDicts (
+      dicts: with dicts; [
+        en
+        en-computers
+        en-science
+        es
+        fr
+      ]
+    ))
   ];
 
   programs.git = {
