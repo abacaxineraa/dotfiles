@@ -10,7 +10,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
       (tool-bar-mode -1)
       (scroll-bar-mode -1)
     (pixel-scroll-precision-mode)
-  
+
 
     (setq-default scroll-conservatively 101
                   scroll-margin 2 
@@ -30,6 +30,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
     (require 'perfect-margin)
     (setopt perfect-margin-visible-width 110
             perfect-margin-only-set-left-margin nil)
+  (add-to-list 'perfect-margin-ignore-modes 'pdf-view-mode)
     (perfect-margin-mode 1)
 #+end_src
 ** Themes
@@ -253,9 +254,10 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (setopt valign-fancy-bar t)
   (add-hook 'org-mode-hook 'valign-mode)
 
- ;;   (require 'org-modern)
- ;; (setopt org-modern-table nil)
-  ;;(add-hook 'org-mode-hook 'org-modern-mode)
+  (require 'org-modern)
+  (setopt org-modern-table nil
+          org-modern-star nil)
+  (add-hook 'org-mode-hook 'org-modern-mode)
 #+end_src
 ** Editing
 *** Spell checking
