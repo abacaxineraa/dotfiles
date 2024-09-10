@@ -27,9 +27,7 @@
     unzip
     evince
 
-    quattrocento-sans
-    jetbrains-mono
-    martian-mono
+    roboto-mono
     
     libreoffice
         google-chrome

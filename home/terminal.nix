@@ -16,7 +16,7 @@
       };
 
       font = {
-        normal.family = "JetBrains Mono";
+        normal.family = "Roboto Mono 10";
         size = 9;
       };
       
