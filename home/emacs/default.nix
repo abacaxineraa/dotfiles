@@ -41,6 +41,7 @@
         nerd-icons-completion
         nerd-icons
 
+        org-sliced-images
         org-download
         org-fragtog
         org-appear

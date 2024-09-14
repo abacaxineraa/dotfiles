@@ -56,16 +56,17 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** Font
 #+begin_src emacs-lisp
-    (add-to-list 'default-frame-alist '(font . "Inconsolata Nerd Font Mono-11")
+         (set-face-attribute 'default nil
+                             :family "Inconsolata Nerd Font")
 
-    (setq-default fill-column 80                 
-                      sentence-end-double-space nil       
-                      bidi-paragraph-direction 'left-to-right 
-                      truncate-string-ellipsis "…")        
+          (setq-default fill-column 80                 
+                            sentence-end-double-space nil       
+                            bidi-paragraph-direction 'left-to-right 
+                            truncate-string-ellipsis "…")        
 
-    (setopt x-underline-at-descent-line nil
-          x-use-underline-position-properties t
-          underline-minimum-offset 10)
+          (setopt x-underline-at-descent-line nil
+                x-use-underline-position-properties t
+                underline-minimum-offset 10)
 #+end_src
 
 ** Cursor
@@ -265,14 +266,22 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (add-hook 'org-mode-hook 'org-modern-mode)
 #+end_src
 
+*** Images
+#+begin_src emacs-lisp
+  (setopt org-image-actual-width (list 500))
+
+  (require 'org-sliced-images)
+  (add-hook 'org-mode-hook 'org-sliced-images-display-inline-images)
+#+end_src
+
 *** Misc
 #+begin_src emacs-lisp
-   (setopt initial-major-mode 'org-mode
-           initial-scratch-message "#+title: scratch buffer\n"
-           org-startup-indented t)
+         (setopt initial-major-mode 'org-mode
+                 initial-scratch-message "#+title: scratch buffer\n"
+                 org-startup-indented t)
 
-   (add-hook 'org-mode-hook 'org-indent-mode)
-   (add-hook 'org-mode-hook 'visual-line-mode)
+         (add-hook 'org-mode-hook 'org-indent-mode)
+         (add-hook 'org-mode-hook 'visual-line-mode)
 #+end_src
 
 ** Editing
@@ -422,5 +431,6 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 * Misc
 #+begin_src emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
   (setopt gc-cons-threshold (* 100 1024 1024))
 #+end_src
