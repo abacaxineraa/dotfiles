@@ -275,7 +275,7 @@ emails emacs
       (setopt org-modern-table nil
               org-modern-star nil
               org-modern-block-name nil
-              org-moden-keyword nil)
+              org-modern-keyword nil)
       (add-hook 'org-mode-hook 'org-modern-mode)
 #+end_src
 
