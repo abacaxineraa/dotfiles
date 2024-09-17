@@ -40,8 +40,7 @@
         nerd-icons-dired
         nerd-icons-completion
         nerd-icons
-
-        org-sliced-images
+        
         org-download
         org-fragtog
         org-appear
@@ -69,13 +68,19 @@
 
     extraPathPackages = with pkgs; [
       nixfmt-rfc-style
-      texlive.combined.scheme-full
       wl-clipboard
       nix
       # rnix-lsp
       python3 # For treemacs
+
+      (texlive.combine {
+        inherit (texlive)
+          scheme-full
+          ieeetran
+          algorithm2e;
+      })
     ];
   };
 
-  home.packages = with pkgs; [ emacs-all-the-icons-fonts ];
+  home.packages = with pkgs; [ inconsolata-nerdfont ];
 }

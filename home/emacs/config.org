@@ -6,6 +6,11 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (setq message-log-max t)
 #+end_src
 
+emails emacs
+
+* TODO gammastep, swaynag-battery
+* TODO thomas' paper into latex
+
 * Appearance
 ** Frame
 #+begin_src emacs-lisp
@@ -51,22 +56,23 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
       (message "%s" next-theme)))
 
   (load-theme (car my-themes) t)
-  (global-set-key (kbd "C-\\") 'cycle-themes)
+  (global-set-key (kbd "s-\\") 'cycle-themes)
 #+end_src
 
 ** Font
 #+begin_src emacs-lisp
-         (set-face-attribute 'default nil
-                             :family "Inconsolata Nerd Font")
+           (set-face-attribute 'default nil
+                               :family "Inconsolata Nerd Font"
+                               :height 115)
 
-          (setq-default fill-column 80                 
-                            sentence-end-double-space nil       
-                            bidi-paragraph-direction 'left-to-right 
-                            truncate-string-ellipsis "…")        
+            (setq-default fill-column 80                 
+                              sentence-end-double-space nil       
+                              bidi-paragraph-direction 'left-to-right 
+                              truncate-string-ellipsis "…")        
 
-          (setopt x-underline-at-descent-line nil
-                x-use-underline-position-properties t
-                underline-minimum-offset 10)
+            (setopt x-underline-at-descent-line nil
+                  x-use-underline-position-properties t
+                  underline-minimum-offset 10)
 #+end_src
 
 ** Cursor
@@ -116,6 +122,8 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (setopt treemacs-width 30)
 
   (global-set-key (kbd "C-t") 'treemacs)
+  (global-set-key (kbd "C-S-t +") 'treemacs-add-project)
+  (global-set-key (kbd "C-S-t -") 'treemacs-add-project)
 #+end_src
 
 * Editing
@@ -222,6 +230,9 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (which-key-mode)
 
   (global-set-key [f12] 'eval-buffer)
+
+  (global-set-key (kbd "C-\\") 'undo)
+  (global-set-key (kbd "C-/") 'undo-redo)
 #+end_src
 
 * Org Mode
@@ -248,40 +259,35 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 *** Tables and symbols
 #+begin_src emacs-lisp
-  (setopt org-startup-align-all-tables t
-          org-startup-numerated nil
-          org-hide-leading-stars t
-          org-hide-emphasis-markers t)
+      (setopt org-startup-align-all-tables t
+              org-startup-numerated nil
+              org-hide-leading-stars t
+              org-hide-emphasis-markers t)
 
-  (require 'org-superstar)
-  (add-hook 'org-mode-hook 'org-superstar-mode)
+      (require 'org-superstar)
+      (add-hook 'org-mode-hook 'org-superstar-mode)
 
-  (require 'valign)
-  (setopt valign-fancy-bar t)
-  (add-hook 'org-mode-hook 'valign-mode)
+      (require 'valign)
+      ;; (setopt valign-fancy-bar t)
+      (add-hook 'org-mode-hook 'valign-mode)
 
-  (require 'org-modern)
-  (setopt org-modern-table nil
-          org-modern-star nil)
-  (add-hook 'org-mode-hook 'org-modern-mode)
-#+end_src
-
-*** Images
-#+begin_src emacs-lisp
-  (setopt org-image-actual-width (list 500))
-
-  (require 'org-sliced-images)
-  (add-hook 'org-mode-hook 'org-sliced-images-display-inline-images)
+      (require 'org-modern)
+      (setopt org-modern-table nil
+              org-modern-star nil
+              org-modern-block-name nil
+              org-moden-keyword nil)
+      (add-hook 'org-mode-hook 'org-modern-mode)
 #+end_src
 
 *** Misc
 #+begin_src emacs-lisp
-         (setopt initial-major-mode 'org-mode
-                 initial-scratch-message "#+title: scratch buffer\n"
-                 org-startup-indented t)
+           (setopt initial-major-mode 'org-mode
+                   initial-scratch-message "#+title: scratch buffer\n"
+                   org-startup-indented t
+                   org-image-actual-width (list 400))
 
-         (add-hook 'org-mode-hook 'org-indent-mode)
-         (add-hook 'org-mode-hook 'visual-line-mode)
+           (add-hook 'org-mode-hook 'org-indent-mode)
+           (add-hook 'org-mode-hook 'visual-line-mode)
 #+end_src
 
 ** Editing
@@ -347,29 +353,39 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
     (add-to-list 'org-latex-classes
                  '("org-plain-latex"
                    "\\documentclass{article}
-                   [NO-DEFAULT-PACKAGES]
-                   [PACKAGES]
-                   [EXTRA]"
+                    [NO-DEFAULT-PACKAGES]
+                    [PACKAGES]
+                    [EXTRA]"
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+    (add-to-list 'org-latex-classes
+                 '("IEEEtran"
+                   "\\documentclass{IEEEtran}"
                    ("\\section{%s}" . "\\section*{%s}")
                    ("\\subsection{%s}" . "\\subsection*{%s}")
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
-  (setopt org-latex-listings 't)
-  (add-hook 'org-mode-hook
-            #'(lambda ()
-               (define-key org-mode-map (kbd "$") 'self-insert-command)))
+    (setopt org-latex-listings 't)
+    (add-hook 'org-mode-hook
+              #'(lambda ()
+                  (define-key org-mode-map (kbd "s-.") 'org-latex-export-to-pdf)
+                  (define-key org-mode-map (kbd "$") 'self-insert-command)))
 
-  (require 'org-fragtog)
-  (add-hook 'org-mode-hook 'org-fragtog-mode)
+    (require 'org-fragtog)
+    (add-hook 'org-mode-hook 'org-fragtog-mode)
 
-  (require 'cdlatex)
-  (add-hook 'org-mode-hook #'turn-on-org-cdlatex)
-  ;; \alpha{} ` a
-  ;; C-c { inserts env template, _ ^ completion inside {}
-  ;; fr tab insterts fractions, lr( tab, equa tab
-  ;; a': \ddot{a} in math mode
+    (require 'cdlatex)
+    (add-hook 'org-mode-hook #'turn-on-org-cdlatex)
+    ;; \alpha{} ` a
+    ;; C-c { inserts env template, _ ^ completion inside {}
+    ;; fr tab insterts fractions, lr( tab, equa tab
+    ;; a': \ddot{a} in math mode
 #+end_src
 
 ** PDF Annotation

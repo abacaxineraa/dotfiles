@@ -15,7 +15,6 @@
     google-chrome
     anki-bin
     pandoc
-    inconsolata-nerdfont
 
     (aspellWithDicts (
       dicts: with dicts; [
