@@ -13,6 +13,18 @@
     evince
     libreoffice
     google-chrome
+    anki-bin
+    pandoc
+
+    (aspellWithDicts (
+      dicts: with dicts; [
+        en
+        en-computers
+        en-science
+        es
+        fr
+      ]
+    ))
   ];
 
   programs.git = {

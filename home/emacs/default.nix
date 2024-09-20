@@ -16,10 +16,10 @@
         ef-themes
         catppuccin-theme
         modus-themes
-        telephone-line
         org-modern
         perfect-margin
         valign
+        doom-modeline
 
         flycheck
         which-key
@@ -33,13 +33,14 @@
         marginalia
         vertico
 
-        all-the-icons
-        all-the-icons-dired
-        all-the-icons-completion
-
         treemacs
         treesit-grammars.with-all-grammars
-
+        treemacs-nerd-icons
+        nerd-icons-ibuffer
+        nerd-icons-dired
+        nerd-icons-completion
+        nerd-icons
+        
         org-download
         org-fragtog
         org-appear
@@ -50,36 +51,36 @@
 
         eglot
         flycheck-eglot
+        jinx
+        magit
 
         pdf-tools
         org-noter
         org-pdftools
         org-noter-pdftools
-
-        avy
-        jinx
+        
+        org-anki
+        anki-connect
+        anki-editor
+        anki-mode
+        anki-vocabulary # TODO: try this out!!
       ];
 
     extraPathPackages = with pkgs; [
       nixfmt-rfc-style
-      texlive.combined.scheme-full
       wl-clipboard
       nix
-      roboto-mono
       # rnix-lsp
       python3 # For treemacs
-      
-      (aspellWithDicts (
-        dicts: with dicts; [
-          en
-          en-computers
-          en-science
-          es
-          fr
-        ]
-      ))
+
+      (texlive.combine {
+        inherit (texlive)
+          scheme-full
+          ieeetran
+          algorithm2e;
+      })
     ];
   };
 
-  home.packages = with pkgs; [ emacs-all-the-icons-fonts ];
+  home.packages = with pkgs; [ inconsolata-nerdfont ];
 }
