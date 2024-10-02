@@ -6,11 +6,6 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (setq message-log-max t)
 #+end_src
 
-emails emacs
-
-* TODO gammastep, swaynag-battery
-* TODO thomas' paper into latex
-
 * Appearance
 ** Frame
 #+begin_src emacs-lisp
@@ -123,7 +118,7 @@ emails emacs
 
   (global-set-key (kbd "C-t") 'treemacs)
   (global-set-key (kbd "C-S-t +") 'treemacs-add-project)
-  (global-set-key (kbd "C-S-t -") 'treemacs-add-project)
+  (global-set-key (kbd "C-S-t -") 'treemacs-remove-project-from-workplace)
 #+end_src
 
 * Editing
@@ -144,7 +139,8 @@ emails emacs
   (global-flycheck-eglot-mode 1)
 
     (require 'corfu)
-    (setopt corfu-auto t)
+    (setopt corfu-auto t
+            corfu-cycle t)
     (global-corfu-mode)
 
     (require 'vertico)

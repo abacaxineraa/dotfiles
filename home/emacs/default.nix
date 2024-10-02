@@ -70,7 +70,7 @@
       nixfmt-rfc-style
       wl-clipboard
       nix
-      # rnix-lsp
+      nil
       python3 # For treemacs
 
       (texlive.combine {
