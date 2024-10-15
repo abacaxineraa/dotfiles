@@ -15,7 +15,9 @@
     google-chrome
     anki-bin
     pandoc
-
+    pdfsam-basic
+    restream
+    
     (aspellWithDicts (
       dicts: with dicts; [
         en
