@@ -1,6 +1,11 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 
 {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+    #inputs.catppuccin.homeManagerModules.catppuccin
+  ];
+  
   programs.nixvim = {
     enable = true;
     # defaultEditor = true;
