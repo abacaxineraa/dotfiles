@@ -12,7 +12,7 @@
     ./user.nix
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   environment.etc."nixos-generation".source = inputs.self;
 

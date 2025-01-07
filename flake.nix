@@ -19,8 +19,13 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nur.url = "github:nix-community/NUR";
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-    
+
   outputs =
     { nixpkgs, ... }@inputs:
     {
@@ -34,9 +39,9 @@
           modules = [
             (./machines + "/${machineName}")
             ./nixos
-            { networking.hostName = machineName;}
+            { networking.hostName = machineName; }
           ];
         }
       ) (builtins.readDir ./machines);
     };
-}  
+}

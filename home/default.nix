@@ -9,5 +9,6 @@
     ./firefox
     ./terminal.nix
     ../modules/home-manager/emacs.nix
+    ./nixvim.nix
   ];
 }
