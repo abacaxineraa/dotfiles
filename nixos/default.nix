@@ -58,6 +58,7 @@
   hardware = {
     pulseaudio.enable = false;
     nvidia = {
+      open = true;
       modesetting.enable = true;
       prime.sync.enable = true;
       prime.intelBusId = "PCI:0:02:0";
