@@ -17,7 +17,6 @@
       "/etc/NetworkManager/system-connections"
     ];
     files = [
-      "/etc/machine-id"
       "/.config/motinors.xml"
     ];
     users.${username} = {

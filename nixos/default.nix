@@ -80,7 +80,7 @@
       videoDrivers = [ "nvidia" ];
     };
 
-    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+    udev.packages = with pkgs; [ gnome-settings-daemon ];
     gnome = {
       gnome-browser-connector.enable = true;
       core-utilities.enable = false;

@@ -4,10 +4,12 @@
   imports = [
     ./userpref.nix 
   ];
+ 
   programs.firefox = {
     enable = true;
-    enableGnomeExtensions = true;
     package = pkgs.firefox-devedition;
+
+    nativeMessagingHosts = [pkgs.gnome-browser-connector];
     
     policies = {
       NewTabPage = true;

@@ -23,9 +23,9 @@
   };
 
   home.packages = with pkgs; [
-    gnome.gnome-tweaks
-    gnome.nautilus
-    gnome.cheese
+    gnome-tweaks
+    nautilus
+    cheese
     
     (fluent-icon-theme.override {
       colorVariants = [ "grey" ];

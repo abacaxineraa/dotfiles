@@ -7,6 +7,7 @@
   ];
   programs.alacritty = {
     enable = true;
+      
     settings = {
       font = {
         normal.family = "Roboto Mono";
@@ -18,11 +19,11 @@
       window = {
         blur = false;
         opacity = 1;
-        padding.x = 15;
-        padding.y = 0;
+        padding.x = 10;
+        padding.y = 10;
       };
 
-      import = [ "${pkgs.alacritty-theme}/catppuccin_mocha.toml" ];
+      general.import = [ "${pkgs.alacritty-theme}/catppuccin_mocha.toml" ];
     };
   };
 
