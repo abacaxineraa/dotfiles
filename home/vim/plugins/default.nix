@@ -5,14 +5,14 @@
 }:
 {
   imports = [
-    ./barbar.nix
-    ./comment.nix
-   # ./floaterm.nix
-    ./harpoon.nix
+    #./barbar.nix
+    # ./comment.nix
+    # ./floaterm.nix
+    #./harpoon.nix
     ./lsp.nix
     ./lualine.nix
     ./markdown-preview.nix
-    ./neorg.nix
+    #  ./neorg.nix
     ./neo-tree.nix
     ./snacks.nix # TODO remove
     ./startify.nix
@@ -38,10 +38,10 @@
 
       nvim-autopairs.enable = true;
 
-      oil = {
-        enable = true;
-        lazyLoad.settings.cmd = "Oil";
-      };
+      # oil = {
+      #   enable = true;
+      #   lazyLoad.settings.cmd = "Oil";
+      # };
 
       trim = {
         enable = true;
