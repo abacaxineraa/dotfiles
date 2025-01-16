@@ -23,7 +23,7 @@
         padding.y = 10;
       };
 
-      general.import = [ "${pkgs.alacritty-theme}/catppuccin_mocha.toml" ];
+      general.import = [ "${pkgs.alacritty-theme}/horizon_dark.toml" ];
     };
   };
 

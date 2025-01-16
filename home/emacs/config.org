@@ -39,7 +39,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 
 ** Themes
 #+begin_src emacs-lisp
-  (defvar my-themes '(ef-day ef-bio catppuccin modus-operandi-tinted))
+  (defvar my-themes '(doom-dracula doom-oksolar-light))
 
   (defun cycle-themes ()
     (interactive)

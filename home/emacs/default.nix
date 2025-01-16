@@ -13,9 +13,8 @@
     extraConfigTangle = true;
     extraEmacsPackages =
       epkgs: with epkgs; [
-        ef-themes
-        catppuccin-theme
-        modus-themes
+        doom-themes
+        
         org-modern
         perfect-margin
         valign
