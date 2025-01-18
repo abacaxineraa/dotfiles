@@ -21,7 +21,6 @@
         enable = true;
         standalonePlugins = [
           "hmts.nvim"
-          "neorg"
           "nvim-treesitter"
         ];
       };

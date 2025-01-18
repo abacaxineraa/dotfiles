@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    #./barbar.nix
+    ./barbar.nix
     # ./comment.nix
     # ./floaterm.nix
     #./harpoon.nix
@@ -14,7 +14,6 @@
     ./markdown-preview.nix
     #  ./neorg.nix
     ./neo-tree.nix
-    ./snacks.nix # TODO remove
     ./startify.nix
     ./telescope.nix
     ./treesitter.nix

@@ -23,7 +23,7 @@
       breakindent = true;
       cursorline = true;
       scrolloff = 8;
-      foldmethod = "indent";
+     # foldmethod = "indent";
       linebreak = true;
       termguicolors = true;
       splitbelow = true;

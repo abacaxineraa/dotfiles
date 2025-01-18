@@ -5,29 +5,30 @@
     alacritty-theme
     roboto-mono
   ];
-  programs.alacritty = {
-    enable = true;
-      
-    settings = {
-      font = {
-        normal.family = "Roboto Mono";
-        size = 10;
+  
+  programs={
+    alacritty = {
+      enable = true;
+
+      settings = {
+        font = {
+          normal.family = "Roboto Mono";
+          size = 10;
+        };
+
+        cursor.style.shape = "Beam";
+
+        window = {
+          blur = false;
+          opacity = 1;
+          padding.x = 10;
+          padding.y = 10;
+        };
+
+        general.import = [ "${pkgs.alacritty-theme}/horizon_dark.toml" ];
       };
-
-      cursor.style.shape = "Beam";
-
-      window = {
-        blur = false;
-        opacity = 1;
-        padding.x = 10;
-        padding.y = 10;
-      };
-
-      general.import = [ "${pkgs.alacritty-theme}/horizon_dark.toml" ];
-    };
   };
 
-  programs = {
     fish = {
       enable = true;
       shellAliases = {
@@ -39,6 +40,28 @@
       };
     };
 
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+      tmux.shellIntegrationOptions = [ "-d 40%" ];
+    };
+
+    tmux = {
+       enable = true;
+        baseIndex = 1;
+         clock24 = true;
+         keyMode = "vi";
+         historyLimit = 50000;
+         aggressiveResize = true;
+         escapeTime = 0;
+         shell = "${pkgs.fish}/bin/fish";
+         terminal = "screen-256color";
+
+         plugins = with pkgs.tmuxPlugins; [
+         ];
+    };
+
+    
     starship = {
       enable = true;
       enableTransience = true;

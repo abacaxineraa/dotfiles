@@ -22,7 +22,6 @@
     users.${username} = {
       directories = [
         ".ssh"
-        ".config"
         ".local/share/Steam"
         ".mozilla/firefox/dev-edition-default"
         "proyectos"
