@@ -1,0 +1,49 @@
+{pkgs, ...}:
+  
+{
+  programs={  
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+      tmux.shellIntegrationOptions = [ "--tmux right, 40%, 90%" ];};
+
+    
+    tmux = {
+      enable = true;
+      baseIndex = 1;
+      clock24 = true;
+      keyMode = "vi";
+      historyLimit = 50000;
+      aggressiveResize = true;
+      shortcut = "a";
+      escapeTime = 0;
+      mouse = true;
+      shell = "${pkgs.fish}/bin/fish";
+      terminal = "screen-256color";
+
+      extraConfig = ''
+set-option -g status-interval 5
+set-option -g automatic-rename on
+set-option -g automatic-rename-format '#{b:pane_current_path}'
+
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
+      bind-key H resize-pane -L 5
+      bind-key J resize-pane -D 5
+      bind-key K resize-pane -U 5
+      bind-key L resize-pane -R 5
+    '';
+      
+      plugins = with pkgs.tmuxPlugins; [
+        extrakto # tab
+        tmux-fzf # F
+        tmux-thumbs #space
+        fzf-tmux-url # I
+        mode-indicator
+        gruvbox
+      ];
+    };
+};
+}

@@ -10,5 +10,6 @@
     ./terminal.nix
     ../modules/home-manager/emacs.nix
     ./vim
+    ./terminal
   ];
 }
