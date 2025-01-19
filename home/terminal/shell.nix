@@ -15,13 +15,12 @@
                  exec tmux
                    end'';
     };
-  };
 
-  starship = {
-    enable = true;
-    enableTransience = true;
-    enableBashIntegration = false;
-  };
+    starship = {
+               enable = true;
+               enableTransience = true;
+               enableBashIntegration = false;
+             };
 
   direnv = {
     enable = true;
@@ -37,5 +36,6 @@
         exec ${config.programs.fish.package}/bin/fish $LOGIN_OPTION
       fi
     '';
+  };
   };
 }

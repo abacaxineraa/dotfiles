@@ -4,9 +4,9 @@
   imports = [
     ./shell.nix
     ./tmux.nix
-  ]
+  ];
   
-    home.packages = with pkgs; [
+  home.packages = with pkgs; [
     alacritty-theme
     roboto-mono
   ];
