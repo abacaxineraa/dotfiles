@@ -38,50 +38,78 @@
       functions = {
         fish_greeting = "${pkgs.fortune}/bin/fortune | ${pkgs.cowsay}/bin/cowsay";
       };
+
+      shellInit = 
+        '' if test -z "$TMUX"
+          exec tmux
+            end'';
     };
 
-    fzf = {
-      enable = true;
-      enableFishIntegration = true;
-      tmux.shellIntegrationOptions = [ "-d 40%" ];
-    };
+  fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    tmux.shellIntegrationOptions = [ "-d 40%" ];
+  };
 
-    tmux = {
-       enable = true;
-        baseIndex = 1;
-         clock24 = true;
-         keyMode = "vi";
-         historyLimit = 50000;
-         aggressiveResize = true;
-         escapeTime = 0;
-         shell = "${pkgs.fish}/bin/fish";
-         terminal = "screen-256color";
+  tmux = {
+    enable = true;
+    baseIndex = 1;
+    clock24 = true;
+    keyMode = "vi";
+    historyLimit = 50000;
+    aggressiveResize = true;
+    prefix = "C-a";
+    escapeTime = 0;
+    shell = "${pkgs.fish}/bin/fish";
+    terminal = "screen-256color";
 
-         plugins = with pkgs.tmuxPlugins; [
-         ];
-    };
+    extraConfig = ''
+set-option -g status-interval 5
+set-option -g automatic-rename on
+set-option -g automatic-rename-format '#{b:pane_current_path}'
 
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
+      bind-key H resize-pane -L 5
+      bind-key J resize-pane -D 5
+      bind-key K resize-pane -U 5
+      bind-key L resize-pane -R 5
+    '';
     
-    starship = {
-      enable = true;
-      enableTransience = true;
-      enableBashIntegration = false;
-    };
+    plugins = with pkgs.tmuxPlugins; [
+      extrakto
+      tmux-fzf
+    ];
+  };
 
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+  
+  starship = {
+    enable = true;
+    enableTransience = true;
+    enableBashIntegration = false;
+  };
 
-    bash = {
-      enable = true;
-      initExtra = ''
+  direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  bash = {
+    enable = true;
+    initExtra = ''
         if [[ $(${pkgs.procps}/bin/ps -o comm= $PPID) != "fish" && -z "$BASH_EXECUTION_STRING" ]]
         then
           shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
           exec ${config.programs.fish.package}/bin/fish $LOGIN_OPTION
         fi
+
+if [[ -z "$TMUX" && $(${pkgs.procps}/bin/ps -o comm= $PPID) != "tmux" ]]; then
+  exec tmux
+fi
+
       '';
-    };
+  };
   };
 }
