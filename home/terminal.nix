@@ -48,7 +48,7 @@
   fzf = {
     enable = true;
     enableFishIntegration = true;
-    tmux.shellIntegrationOptions = [ "-d 40%" ];
+    tmux.shellIntegrationOptions = [ "--tmux right, 40%, 90%" ];
   };
 
   tmux = {
@@ -58,7 +58,7 @@
     keyMode = "vi";
     historyLimit = 50000;
     aggressiveResize = true;
-    prefix = "C-a";
+    shortcut = "a";
     escapeTime = 0;
     shell = "${pkgs.fish}/bin/fish";
     terminal = "screen-256color";
@@ -79,8 +79,12 @@ set-option -g automatic-rename-format '#{b:pane_current_path}'
     '';
     
     plugins = with pkgs.tmuxPlugins; [
-      extrakto
-      tmux-fzf
+      extrakto # shift
+      tmux-fzf # F
+      tmux-thumbs #space
+      fzf-tmux-url # I
+      mode-indicator
+      power-theme
     ];
   };
 
