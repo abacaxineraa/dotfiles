@@ -60,6 +60,7 @@
     aggressiveResize = true;
     shortcut = "a";
     escapeTime = 0;
+    mouse = true;
     shell = "${pkgs.fish}/bin/fish";
     terminal = "screen-256color";
 
