@@ -73,6 +73,7 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 ** Cursor
 #+begin_src emacs-lisp
   (setopt cursor-type '(bar . 3))
+  (global-hl-line-mode 1)
 #+end_src
 
 ** Indent lines
@@ -439,6 +440,18 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (require 'anki-connect)
   (require 'anki-mode)
   (require 'org-anki) ;; Syncs the notes
+#+end_src
+
+* Evil Mode
+#+begin_src emacs-lisp
+    (require 'evil)
+    (evil-mode 1)
+
+    (require 'evil-org)
+
+    (require 'evil-vimish-fold)
+    (add-hook 'prog-mode-hook 'evil-vimish-fold-mode)
+    (add-hook 'text-mode-hook 'evil-vimish-fold-mode)
 #+end_src
 
 * Misc

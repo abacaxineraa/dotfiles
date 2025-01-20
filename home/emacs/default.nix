@@ -14,6 +14,9 @@
     extraEmacsPackages =
       epkgs: with epkgs; [
         doom-themes
+        evil
+        evil-org
+        evil-vimish-fold
         
         org-modern
         perfect-margin
