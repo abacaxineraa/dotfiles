@@ -39,14 +39,14 @@
           plugin = yank;
           extraConfig = "set -g @yank_selection_mouse 'clipboard'";
         }
-        {
-          # plugin = extrakto; # tab
-          # extraConfig = ''
-          #   set -g @extrakto_popup_size '40%, 90%'
-          #   set -g @extrakto_popup_position 'R,C'
-          #   set -g @extrakto_filter_order 'line word all'
-          # '';
-        }
+        # {
+        #   # plugin = extrakto; # tab
+        #   # extraConfig = ''
+        #   #   set -g @extrakto_popup_size '40%, 90%'
+        #   #   set -g @extrakto_popup_position 'R,C'
+        #   #   set -g @extrakto_filter_order 'line word all'
+        #   # '';
+        # }
       ];
     };
   };

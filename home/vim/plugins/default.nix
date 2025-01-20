@@ -20,6 +20,7 @@
     ./vimtex.nix # inria
     ./whichkey.nix
     ./tmux-navigator.nix
+    ./fugitive.nix
   ];
 
   programs.nixvim = {
