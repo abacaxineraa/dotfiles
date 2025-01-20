@@ -19,10 +19,15 @@
     ./treesitter.nix
     ./vimtex.nix # inria
     ./whichkey.nix
-    ./navigator.nix
+    ./moveline.nix
   ];
 
   programs.nixvim = {
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
+    
     plugins = {
       # Lazy loading
       lz-n.enable = true;

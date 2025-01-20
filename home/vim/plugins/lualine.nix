@@ -4,6 +4,7 @@
 
     settings = {
       options.globalstatus = true;
+      options.theme =[ "evil-theme"];
 
       # +-------------------------------------------------+
       # | A | B | C                             X | Y | Z |
