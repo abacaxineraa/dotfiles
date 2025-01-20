@@ -19,7 +19,7 @@
     ./treesitter.nix
     ./vimtex.nix # inria
     ./whichkey.nix
-    ./moveline.nix
+    ./tmux-navigator.nix
   ];
 
   programs.nixvim = {
