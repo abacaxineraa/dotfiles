@@ -19,6 +19,7 @@
     ./treesitter.nix
     ./vimtex.nix # inria
     ./whichkey.nix
+    ./navigator.nix
   ];
 
   programs.nixvim = {

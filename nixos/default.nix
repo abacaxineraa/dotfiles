@@ -64,6 +64,10 @@
       prime.intelBusId = "PCI:0:02:0";
       prime.nvidiaBusId = "PCI:01:0:0";
     };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 
   boot = {

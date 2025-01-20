@@ -19,6 +19,64 @@
           text-scaling-factor = 0.92;
         };
 
+        "org/gnome/desktop/peripherals/touchpad" = {
+          two-finger-scrolling-enabled = true;
+        };
+
+        "org/gnome/mutter" = {
+          edge-tiling = false;
+        };
+
+        "org/gnome/shell/extensions/pop-shell" = {
+          tile-by-default = true;
+          gap-inner = mkUint32 0;
+          gap-outer = mkUint32 0;
+        };
+
+        "org/gnome/shell/keybindings" = {
+          focus-active-notification = [ ];
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          custom-keybindings = [
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
+          ];
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          binding = "<Super>e";
+          command = "emacsclient -c";
+          name = "emacs";
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+          binding = "<Super>t";
+          command = "alacritty";
+          name = "alacritty";
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+          binding = "<Super>n";
+          command = "alacritty -e nvim";
+          name = "nvim";
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+          binding = "<Super>f";
+          command = "firefox-devedition";
+          name = "firefox";
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
+          binding = "<Super>g";
+          command = "google-chrome-stable";
+          name = "google";
+        };
+
         "org/gnome/desktop/background" = {
           picture-uri = wallpaper;
           picture-uri-dark = wallpaper;
@@ -47,12 +105,18 @@
           xkb-options = [
             "terminate:ctrl_alt_bksp"
             "ctrl:nocaps"
+            "compose:ralt"
+            "lv3:ralt_switch"
+
           ];
         };
 
         "org/gnome/desktop/peripherals/mouse" = {
           natural-scroll = true;
           speed = 0.21052631578947367;
+          };
+        "org/gnome/desktop/peripherals/keyboard" = {
+          numlock-state = "true";
         };
 
         "org/gnome/mutter" = {
@@ -79,12 +143,13 @@
 
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "appmenu:minimize,close";
+          focus-mode = "sloppy";
         };
 
         "org/gnome/desktop/wm/keybindings" = {
           begin-move = [ ];
           begin-resize = [ "<Menu>" ];
-          close = ["<Super><Shift>q"];
+          close = [ "<Super><Shift>q" ];
           cycle-group = [ ];
           cycle-group-backward = [ ];
           cycle-panels = [ ];
@@ -103,17 +168,23 @@
           switch-group-backward = [ ];
           switch-panels = [ ];
           switch-panels-backward = [ ];
-          switch-to-workspace-1 = ["<Super>1" ];
-          switch-to-workspace-2 = ["<Super>2" ];
-          switch-to-workspace-3 = ["<Super>3" ];
-          switch-to-workspace-4 = ["<Super>4" ];
+          switch-to-workspace-1 = [ "<Super>1" ];
+          switch-to-workspace-2 = [ "<Super>2" ];
+          switch-to-workspace-3 = [ "<Super>3" ];
+          switch-to-workspace-4 = [ "<Super>4" ];
           switch-to-workspace-down = [ "<Control><Alt>Down" ];
           switch-to-workspace-last = [ ];
           switch-to-workspace-left = [ "<Control><Alt>Left" ];
           switch-to-workspace-right = [ "<Control><Alt>Right" ];
           switch-to-workspace-up = [ ];
           toggle-maximized = [ "<Super>m" ];
+          toggle-tiled-left = [ ];
+          toggle-tiled-right = [ ];
           unmaximize = [ ];
+        };
+
+        "org/gnome/tweaks" = {
+          show-extensions-notice = false;
         };
       };
 }
