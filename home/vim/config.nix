@@ -15,7 +15,7 @@
       tabstop = 4;
       softtabstop = 4;
       # 1 when more than 2, 0 never, 2 always
-      showtabline = 2;
+      showtabline = 0;
       expandtab = true;
       smartindent = true;
       autoindent = true;
@@ -23,7 +23,7 @@
       breakindent = true;
       cursorline = true;
       scrolloff = 8;
-     # foldmethod = "indent";
+      foldmethod = "manual";
       linebreak = true;
       termguicolors = true;
       splitbelow = true;
