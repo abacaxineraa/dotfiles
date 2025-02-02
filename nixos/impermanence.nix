@@ -24,6 +24,8 @@
         ".ssh"
         ".local/share/Steam"
         ".mozilla/firefox/dev-edition-default"
+        ".config/google-chrome"
+        ".config/discord"
         "proyectos"
       ];
     };

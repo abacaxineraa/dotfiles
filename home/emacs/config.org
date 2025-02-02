@@ -117,8 +117,8 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (require 'treemacs)
   (setopt treemacs-width 30)
 
-  (global-set-key (kbd "C-t") 'treemacs)
-  (global-set-key (kbd "C-S-t +") 'treemacs-add-project)
+  (global-set-key (kbd "C-;") 'treemacs)
+    (global-set-key (kbd "C-S-t =") 'treemacs-add-project)
   (global-set-key (kbd "C-S-t -") 'treemacs-remove-project-from-workplace)
 #+end_src
 
@@ -191,27 +191,31 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
 #+begin_src emacs-lisp
   (require 'magit)
 #+end_src
+
 ** Navigation
+
 #+begin_src emacs-lisp
-  (require 'avy)
-  (global-set-key (kbd "C-:") 'avy-goto-char-timer)
+   (require 'avy)
+   (global-set-key (kbd "C-:") 'avy-goto-char-timer)
 
-  (require 'ibuf-ext)
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
+   (require 'ibuf-ext)
+   (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-  (defun ibuffer--remove-column-titles-after (_format)
-    (save-excursion
-      (set-buffer "*Ibuffer*")
-      (let ((inhibit-read-only t))
-        (goto-char 1)
-        (search-forward "-\n" nil t)
-        (delete-region 1 (point)))
-      (let ((window-min-height 1))
-        (shrink-window-if-larger-than-buffer))))
-  (advice-add 'ibuffer-update-title-and-summary :after #'ibuffer--remove-column-titles-after)
+   (defun ibuffer--remove-column-titles-after (_format)
+     (save-excursion
+       (set-buffer "*Ibuffer*")
+       (let ((inhibit-read-only t))
+         (goto-char 1)
+         (search-forward "-\n" nil t)
+         (delete-region 1 (point)))
+       (let ((window-min-height 1))
+         (shrink-window-if-larger-than-buffer))))
+   (advice-add 'ibuffer-update-title-and-summary :after #'ibuffer--remove-column-titles-after)
 
- (setq browse-url-browser-function 'browse-url-generic
-       browse-url-generic-program "firefox-devedition") 
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "firefox-devedition")
+
+  (require 'fzf)
 #+end_src
 
 ** Misc
@@ -442,16 +446,17 @@ https://github.com/terlar/emacs-config/tree/f1a5a821524d5b7245bf68542017f1954288
   (require 'org-anki) ;; Syncs the notes
 #+end_src
 
-* Evil Mode
+* EvilMode
 #+begin_src emacs-lisp
-    (require 'evil)
-    (evil-mode 1)
+  (require 'evil)
+  (evil-mode 1)
 
-    (require 'evil-org)
+  (require 'evil-org)
 
-    (require 'evil-vimish-fold)
-    (add-hook 'prog-mode-hook 'evil-vimish-fold-mode)
-    (add-hook 'text-mode-hook 'evil-vimish-fold-mode)
+  (require 'evil-vimish-fold)
+  (add-hook 'prog-mode-hook 'evil-vimish-fold-mode)
+  (add-hook 'text-mode-hook 'evil-vimish-fold-mode)
+  (evil-set-undo-system 'undo-redo)
 #+end_src
 
 * Misc

@@ -64,10 +64,12 @@
       prime.intelBusId = "PCI:0:02:0";
       prime.nvidiaBusId = "PCI:01:0:0";
     };
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+
+    # fixes gray screen bug
+    # bluetooth = {
+    #   enable = true;
+    #   powerOnBoot = true;
+    # };
   };
 
   boot = {
@@ -102,7 +104,7 @@
   };
 
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
-
+ 
   virtualisation.docker =
     {
       enable = true;

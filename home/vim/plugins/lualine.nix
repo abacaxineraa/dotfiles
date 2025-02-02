@@ -1,10 +1,10 @@
 {
   programs.nixvim.plugins.lualine = {
     enable = true;
-    theme = "horizon";
-    
+
     settings = {
       options.globalstatus = true;
+      options.theme = "horizon";
       # +-------------------------------------------------+
       # | A | B | C                             X | Y | Z |
       # +-------------------------------------------------+

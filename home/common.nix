@@ -17,6 +17,7 @@
     pandoc
     pdfsam-basic
     restream
+    fzf
     
     (aspellWithDicts (
       dicts: with dicts; [

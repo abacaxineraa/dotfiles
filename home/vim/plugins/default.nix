@@ -5,22 +5,18 @@
 }:
 {
   imports = [
-    ./barbar.nix
-    # ./comment.nix
-    # ./floaterm.nix
-    #./harpoon.nix
-    ./lsp.nix
-    ./lualine.nix
-    ./markdown-preview.nix
-    #  ./neorg.nix
-    ./neo-tree.nix
-    ./startify.nix
-    ./telescope.nix
-    ./treesitter.nix
-    ./vimtex.nix # inria
-    ./whichkey.nix
-    ./tmux-navigator.nix
-    ./fugitive.nix
+  ./harpoon.nix
+  ./lsp.nix
+  ./lualine.nix
+  ./markdown-preview.nix
+  ./neo-tree.nix
+  ./startify.nix
+  ./telescope.nix
+  ./treesitter.nix
+  ./vimtex.nix 
+  ./whichkey.nix
+  ./tmux-navigator.nix
+  ./fugitive.nix
   ];
 
   programs.nixvim = {
@@ -45,10 +41,6 @@
 
       nvim-autopairs.enable = true;
 
-      # oil = {
-      #   enable = true;
-      #   lazyLoad.settings.cmd = "Oil";
-      # };
 
       trim = {
         enable = true;

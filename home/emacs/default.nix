@@ -17,6 +17,7 @@
         evil
         evil-org
         evil-vimish-fold
+        fzf
         
         org-modern
         perfect-margin
