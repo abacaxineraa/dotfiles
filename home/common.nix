@@ -18,7 +18,8 @@
     pdfsam-basic
     restream
     fzf
-    
+    rstudio
+
     (aspellWithDicts (
       dicts: with dicts; [
         en
