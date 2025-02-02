@@ -22,8 +22,7 @@
             path = "[path]";
             luasnip = "[snip]";
             buffer = "[buffer]";
-            neorg = "[neorg]";
-          };
+                   };
         };
       };
 
