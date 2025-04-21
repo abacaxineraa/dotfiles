@@ -29,7 +29,7 @@
          export NIX_PROFILES="${builtins.concatStringsSep " " (lib.lists.reverseList config.environment.profiles)}"
       '';
 
-  
+
 
   nixpkgs = {
     overlays = [ inputs.nur.overlay ];
@@ -60,6 +60,7 @@
     nvidia = {
       open = true;
       modesetting.enable = true;
+      powerManagement.enable = true;
       prime.sync.enable = true;
       prime.intelBusId = "PCI:0:02:0";
       prime.nvidiaBusId = "PCI:01:0:0";
@@ -104,7 +105,7 @@
   };
 
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
- 
+
   virtualisation.docker =
     {
       enable = true;

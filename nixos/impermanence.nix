@@ -26,7 +26,10 @@
         ".mozilla/firefox/dev-edition-default"
         ".config/google-chrome"
         ".config/discord"
+        ".config/unity3d"
+        ".config/unityhub"
         "proyectos"
+        "Unity/Hub/Editor"
       ];
     };
 
