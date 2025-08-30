@@ -1,84 +1,41 @@
 {
+  programs.nixvim = {
+    plugins = {
+      dap-virtual-text.enable = true;
+      cmp-dap.enable = true;
+             dap-python.enable = true;
 
-programs.nixvim = {
-  plugins = {
-    dap-virtual-text.enable = true;
-    cmp-dap.enable = true;
+                dap-ui = {
+                    enable = true;
+                    settings.mappings = {
+                      expand = [ "<CR>" "<2-LeftMouse>" ];
+                      open = "o";
+                      remove = "d";
+                      edit = "e";
+                      repl = "r";
+                      toggle = "t";
+                    };
+              };
+      dap = {
+        enable = true;
+        signs = {
+          dapBreakpoint = {
+            text = "●";
+            texthl = "DapBreakpoint";
+          };
+          dapBreakpointCondition = {
+            text = "●";
+            texthl = "DapBreakpointCondition";
+          };
+          dapLogPoint = {
+            text = "◆";
+            texthl = "DapLogPoint";
+          };
+        };
 
-    dap-python = {
-      enable = true;
-      settings.console = "integratedTerminal";
-      testRunner = "pytest";
-      customConfigurations = [
-        {
-          type = "python";
-          request = "launch";
-          name = "Launch file";
-          program = "\${file}";
-          console = "integratedTerminal";
-        }
-      ];
-    };
-
-    dap-ui = {
-      enable = true;
-      settings.mappings = {
-        expand = [ "<CR>" "<2-LeftMouse>" ];
-        open = "o";
-        remove = "d";
-        edit = "e";
-        repl = "r";
-        toggle = "t";
+        extensions = { };
       };
     };
-
-    dap = {
-      enable = true;
-      signs = {
-        dapBreakpoint = {
-          text = "●";
-          texthl = "DapBreakpoint";
-        };
-        dapBreakpointCondition = {
-          text = "●";
-          texthl = "DapBreakpointCondition";
-        };
-        dapLogPoint = {
-          text = "◆";
-          texthl = "DapLogPoint";
-        };
-      };
-    };
-  };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     keymaps = [
       {
