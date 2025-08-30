@@ -13,10 +13,11 @@
   ./startify.nix
   ./telescope.nix
   ./treesitter.nix
-  ./vimtex.nix 
+  ./vimtex.nix
   ./whichkey.nix
   ./tmux-navigator.nix
   ./fugitive.nix
+  ./dap.nix
   ];
 
   programs.nixvim = {
@@ -24,7 +25,7 @@
       mapleader = " ";
       maplocalleader = " ";
     };
-    
+
     plugins = {
       # Lazy loading
       lz-n.enable = true;
