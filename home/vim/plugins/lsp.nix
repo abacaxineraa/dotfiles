@@ -30,6 +30,7 @@
         };
 
         servers = {
+          jdtls.enable = true;
           clangd.enable = true;
           texlab.enable = true;
         };
